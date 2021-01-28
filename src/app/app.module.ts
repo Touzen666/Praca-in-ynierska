@@ -4,23 +4,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-
 import { environment } from '../environments/environment';
+import { UserComponent } from './user/user.component';
+import { LodowkaComponent } from './lodowka/lodowka.component';
 
-import 'hammerjs';
-import { MatButtonModule } from '@angular/material/button';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserComponent, LodowkaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatButtonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
   ],

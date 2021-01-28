@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "moja-dieta-1314d": {
+      "hosting": {
+        "Praca-inzynierska": [
+          "moja-dieta-1314d"
+        ]
+      }
+    }
+  }
+}

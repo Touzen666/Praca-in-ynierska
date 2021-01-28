@@ -1,8 +1,16 @@
-<mat-toolbar>
-  <span>My Application</span>
-</mat-toolbar>
-<section>
-  <mat-slider min="1" max="100" step="1" value="1">
-  </mat-slider>
-    <ngx-auth-firebaseui> </ngx-auth-firebaseui>
-</section>
+<p>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>My App</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p>
+
+<router-outlet></router-outlet>
+<!-- <section>
+  <ngx-auth-firebaseui></ngx-auth-firebaseui>
+</section> -->

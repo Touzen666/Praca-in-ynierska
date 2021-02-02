@@ -1,10 +1,10 @@
-type JednostkaWagi = "ml" | "l" | "kg" | "g"
+type JednostkaWagi = 'ml' | 'l' | 'kg' | 'g';
 
 export interface Produkt {
   id?: string;
 
   nazwa: string;
-  ilosc: number;
+  ilosc?: number;
   jednostkaWagi: JednostkaWagi;
   waga: number;
 

@@ -12,7 +12,7 @@ import { MaterialModule } from './material/material.module';
 import { environment } from '../environments/environment';
 import { UserComponent } from './user/user.component';
 import { LodowkaComponent } from './lodowka/lodowka.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, UserComponent, LodowkaComponent],
   imports: [
@@ -20,6 +20,7 @@ import { LodowkaComponent } from './lodowka/lodowka.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
   ],

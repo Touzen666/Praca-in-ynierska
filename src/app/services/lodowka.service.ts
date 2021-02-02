@@ -1,40 +1,35 @@
-import { Produkt } from './../models/produkt';
 import { Injectable } from '@angular/core';
-import firebase from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/storage';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { asyncScheduler, Observable, scheduled } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Produkt } from './../models/produkt';
+
 @Injectable({
   providedIn: 'root',
 })
 export class LodowkaService {
-  constructor() { }
-  // getRef() {
-  //   var db = firebase.firestore();
-
-  //   var produktyRef = db
-  //     .collection('produkty')
-  //     .doc('lodowka')
-  //     .collection('details')
-  //     .doc('data');
-
-  //   console.log(produktyRef);
-  // }
-
+  constructor(private firestore: AngularFirestore) { }
 
   pobierzProduktyWLodowce(user: string): Observable<Produkt[]> {
-    return scheduled([
-      [{
-        nazwa: "test",
-        ilosc: 1,
-        jednostkaWagi: 'kg',
-        waga: 1
-      } as Produkt]
-    ], asyncScheduler)
+    return this.firestore
+      .collection("users")
+      .doc(user)
+      .collection("produkty")
+      .get()
+      .pipe(map(produkty => {
+        return produkty.docs
+          .map(produkt => ({ ...produkt.data(), id: produkt.id }) as Produkt)
+      }))
   }
 
-  dodajDoLodowki(user: string, produkt: Produkt): Observable<boolean> {
-    return scheduled([true], asyncScheduler)
+  dodajDoLodowki(user: string, produkt: Produkt): Promise<void> {
+    return this.firestore
+      .collection("users")
+      .doc(user)
+      .collection("produkty")
+      .doc()
+      .set(produkt)
   }
 
   wyjmijZLodowki(user: string, idProduktu: string): Observable<boolean> {

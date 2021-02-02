@@ -1,6 +1,8 @@
 type JednostkaWagi = "ml" | "l" | "kg" | "g"
 
 export interface Produkt {
+  id?: string;
+
   nazwa: string;
   ilosc: number;
   jednostkaWagi: JednostkaWagi;

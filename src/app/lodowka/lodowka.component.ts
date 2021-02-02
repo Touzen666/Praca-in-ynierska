@@ -33,6 +33,10 @@ export class LodowkaComponent implements OnInit {
         //   jednostkaWagi: "kg",
         //   waga: 1,
         // }).then(() => console.log("dodano do lodowki"))
+
+        // this.lodowkaService
+        //   .wyjmijZLodowki(this.user.uid, "poA7xnLFLFsuQooDUnVj")
+        //   .then(() => console.log("wyjeto z lodowki"))
       })
     })
   }

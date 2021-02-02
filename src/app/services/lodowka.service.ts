@@ -32,9 +32,12 @@ export class LodowkaService {
       .set(produkt)
   }
 
-  wyjmijZLodowki(user: string, idProduktu: string): Observable<boolean> {
-    return scheduled([
-      true
-    ], asyncScheduler)
+  wyjmijZLodowki(user: string, idProduktu: string): Promise<void> {
+    return this.firestore
+      .collection("users")
+      .doc(user)
+      .collection("produkty")
+      .doc(idProduktu)
+      .delete()
   }
 }

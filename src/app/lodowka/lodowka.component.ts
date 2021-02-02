@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthProcessService } from 'ngx-auth-firebaseui';
+import { Produkt } from '../models/produkt';
+import { LodowkaService } from '../services/lodowka.service';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-lodowka',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LodowkaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private lodowkaService: LodowkaService,
+    private auth: AngularFireAuth
+  ) { }
+
+  public produkty: Produkt[] = []
+  public user: firebase.User | null
 
   ngOnInit(): void {
+    this.auth.authState.subscribe(user => {
+      this.user = user
+      this.lodowkaService.pobierzProduktyWLodowce(this.user.uid).subscribe(produkty => {
+        this.produkty = produkty
+      })
+    })
+
   }
 
 }

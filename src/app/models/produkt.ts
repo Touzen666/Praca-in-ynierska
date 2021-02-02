@@ -1,11 +1,14 @@
-export class Produkt {
-  img: string;
+type JednostkaWagi = "ml" | "l" | "kg" | "g"
+
+export interface Produkt {
   nazwa: string;
-  ilość: number;
-  jednostkaWagi: string;
+  ilosc: number;
+  jednostkaWagi: JednostkaWagi;
   waga: number;
-  energia: number;
-  węglowodany: number;
-  białko: number;
-  tłuszcze: number;
+
+  img?: string;
+  energia?: number;
+  weglowodany?: number;
+  bialko?: number;
+  tluszcze?: number;
 }

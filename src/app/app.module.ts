@@ -13,8 +13,17 @@ import { environment } from '../environments/environment';
 import { UserComponent } from './user/user.component';
 import { LodowkaComponent } from './lodowka/lodowka.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { ModalCreatorComponent } from './modals/modal-creator/modal-creator.component';
+import { AddProductComponent } from './modals/add-product/add-product.component';
 @NgModule({
-  declarations: [AppComponent, UserComponent, LodowkaComponent],
+  declarations: [
+    AppComponent,
+    UserComponent,
+    LodowkaComponent,
+    ModalCreatorComponent,
+    AddProductComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

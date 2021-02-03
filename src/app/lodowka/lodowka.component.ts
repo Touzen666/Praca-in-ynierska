@@ -20,25 +20,23 @@ export class LodowkaComponent implements OnInit {
   public user: firebase.User | null;
 
   ngOnInit(): void {
-    this.auth.authState.subscribe((user) => {
-      this.user = user;
-      this.lodowkaService
-        .pobierzProduktyWLodowce(this.user.uid)
-        .subscribe((produkty) => {
-          this.produkty = produkty;
-          console.log('pobrano produkty', produkty);
-
-          // this.lodowkaService.dodajDoLodowki(this.user.uid, {
-          //   nazwa: "jablko",
-          //   ilosc: 1,
-          //   jednostkaWagi: "kg",
-          //   waga: 1,
-          // }).then(() => console.log("dodano do lodowki"))
-
-          // this.lodowkaService
-          //   .wyjmijZLodowki(this.user.uid, "poA7xnLFLFsuQooDUnVj")
-          //   .then(() => console.log("wyjeto z lodowki"))
-        });
-    });
+    // this.auth.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.lodowkaService
+    //     .pobierzProduktyWLodowce(this.user.uid)
+    //     .subscribe((produkty) => {
+    //       this.produkty = produkty;
+    //       console.log('pobrano produkty', produkty);
+    //       // this.lodowkaService.dodajDoLodowki(this.user.uid, {
+    //       //   nazwa: "jablko",
+    //       //   ilosc: 1,
+    //       //   jednostkaWagi: "kg",
+    //       //   waga: 1,
+    //       // }).then(() => console.log("dodano do lodowki"))
+    //       // this.lodowkaService
+    //       //   .wyjmijZLodowki(this.user.uid, "poA7xnLFLFsuQooDUnVj")
+    //       //   .then(() => console.log("wyjeto z lodowki"))
+    //     });
+    // });
   }
 }

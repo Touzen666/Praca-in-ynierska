@@ -53,3 +53,11 @@ table {
 	-ms-border-radius: unset !important;
 	-o-border-radius: unset !important;
 }
+.rightCross{
+	float: right;
+
+}
+.cancelCross{
+	width: 15px;
+	height: auto;
+}

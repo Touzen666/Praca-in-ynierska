@@ -16,6 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ModalCreatorComponent } from './modals/modal-creator/modal-creator.component';
 import { AddProductComponent } from './modals/add-product/add-product.component';
+import { AddProductButtonComponent } from './lodowka/add-product-button/add-product-button.component';
+import { ProductComponent } from './lodowka/product/product.component';
+import { ProductDetaleComponent } from './modals/product-detale/product-detale.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +27,9 @@ import { AddProductComponent } from './modals/add-product/add-product.component'
     LodowkaComponent,
     ModalCreatorComponent,
     AddProductComponent,
+    AddProductButtonComponent,
+    ProductComponent,
+    ProductDetaleComponent,
   ],
   imports: [
     BrowserModule,

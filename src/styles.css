@@ -55,7 +55,7 @@ table {
 }
 .rightCross{
 	float: right;
-
+	cursor: pointer;
 }
 .cancelCross{
 	width: 15px;

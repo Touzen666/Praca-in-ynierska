@@ -1,0 +1,20 @@
+.product-card{
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    margin: 30px;
+}
+.card-title{
+    position: absolute;
+    bottom: 0;left: 0;
+    right: 0;
+    height: 30px;
+    padding-top: 15px;
+   border-top: rgb(218, 216, 216) solid 1px; 
+   color: rgb(95, 108, 121);
+}
+.modalImagePlaceholder{
+	content:url(../../../assets/image-placeholder.jpg);
+	width: 125px;
+
+}

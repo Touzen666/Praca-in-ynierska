@@ -27,5 +27,19 @@ export class ModalCreatorComponent implements OnInit {
       // this.animal = result;
     });
   }
+  openDialogDetailsProduct(): void {
+    const dialogRef = this.dialog.open(AddProductComponent, {
+      width: '100%',
+      height: '100%',
+      maxWidth: '100%',
+
+      // data: { name: this.name, animal: this.animal },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
   ngOnInit(): void {}
 }

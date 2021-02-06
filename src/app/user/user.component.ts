@@ -1,4 +1,4 @@
-import { LodowkaService } from './../services/lodowka.service';
+import { LodowkaService } from '../services/lodowka/lodowka.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

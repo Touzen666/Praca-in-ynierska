@@ -1,13 +1,13 @@
 import { Observable } from 'rxjs';
-import { ProductDetaleComponent } from './../modals/product-detale/product-detale.component';
-import { AddProductComponent } from './../modals/add-product/add-product.component';
+import { ProductDetaleComponent } from './../../modals/product-detale/product-detale.component';
+import { AddProductComponent } from './../../modals/add-product/add-product.component';
 import { Injectable } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { Produkt } from '../models/produkt';
+import { Produkt } from '../../models/produkt';
 @Injectable({
   providedIn: 'root',
 })

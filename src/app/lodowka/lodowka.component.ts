@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthProcessService } from 'ngx-auth-firebaseui';
 import { Produkt } from '../models/produkt';
-import { LodowkaService } from '../services/lodowka.service';
+import { LodowkaService } from '../services/lodowka/lodowka.service';
 import firebase from 'firebase';
 
 @Component({

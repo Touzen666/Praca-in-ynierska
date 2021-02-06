@@ -1,5 +1,5 @@
-import { LodowkaService } from './../../services/lodowka.service';
-import { ModalCreatorService } from './../../services/modal-creator.service';
+import { LodowkaService } from '../../services/lodowka/lodowka.service';
+import { ModalCreatorService } from './../../services/modal-creator/modal-creator.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

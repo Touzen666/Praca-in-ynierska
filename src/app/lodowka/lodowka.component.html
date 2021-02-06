@@ -1,9 +1,12 @@
-<div *ngIf="user"> Hello {{ user.displayName }}</div>
+<div>
+  <div *ngIf="user">Hello {{ user.displayName }}</div>
 
-<div *ngFor="let produkt of produkty">
+  <div *ngFor="let produkt of produkty">
     <div>{{ produkt.id }}</div>
     <div>{{ produkt.nazwa }}</div>
-</div>
+  </div>
 
-<app-product></app-product>
-<app-add-product-button></app-add-product-button>
+  <app-product-card></app-product-card>
+  <!-- <app-add-product-button (dodanoPRoduckt)="handleDodanoProdukt()"></app-add-product-button> -->
+  <app-add-product-button></app-add-product-button>
+</div>

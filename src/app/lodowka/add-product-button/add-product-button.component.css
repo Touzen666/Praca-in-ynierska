@@ -1,8 +1,6 @@
-.add-button-container {
-    position: absolute;
-    bottom: 2vh;
-    right: -4vw;
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
+.fab-bottom-right {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+}

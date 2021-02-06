@@ -1,15 +1,14 @@
-.modalContentContainer{
-    text-align: center;
+.modalImagePlaceholder {
+  content: url(../../../assets/image-placeholder.jpg);
+  width: 70vw;
+  margin-left: 9vw;
 }
-.modalImagePlaceholder{
-	content:url(../../../assets/image-placeholder.jpg);
-	width: 70vw;
-	margin-left: 9vw;
+
+.caloricValue {
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
-.caloricValue{
-	padding-left: 10vw;
-	padding-right: 10vw;
-}
-.m-checkbox{
-padding-left: 15px;
+
+.m-checkbox {
+  padding-left: 15px;
 }

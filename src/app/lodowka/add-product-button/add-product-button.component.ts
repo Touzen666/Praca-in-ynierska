@@ -1,4 +1,5 @@
-import { ModalCreatorComponent } from './../../modals/modal-creator/modal-creator.component';
+import { LodowkaService } from './../../services/lodowka.service';
+import { ModalCreatorService } from './../../services/modal-creator.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-product-button.component.css'],
 })
 export class AddProductButtonComponent implements OnInit {
-  constructor(public modalCreator: ModalCreatorComponent) {}
+  constructor(
+    public modalCreator: ModalCreatorService,
+    public lodowka: LodowkaService
+  ) {}
 
-  public openModal = this.modalCreator;
+  onClick(): void {
+    this.modalCreator.openDialogAddProduct().subscribe((produkt) => {
+      // TODO send event
+      // TODO get user info
+      // this.lodowka.dodajDoLodowki(userId,  produkt);
+    });
+  }
+
   ngOnInit(): void {}
 }

@@ -1,54 +1,58 @@
 <div class="modalContentContainer">
-  <h1 mat-dialog-title class="modalTitle">{{title}} 
+  <h1 mat-dialog-title class="modalTitle">
+    {{ title }}
     <div class="rightCross">
-      <img class="cancelCross" (click)="onNoClick()" src="../../../assets/cancel.png" alt="">
+      <img
+        class="cancelCross"
+        (click)="onNoClick()"
+        src="../../../assets/cancel.png"
+        alt=""
+      />
     </div>
   </h1>
-  
-  
+
   <div mat-dialog-content>
-      <section class="img">
-        <div class="modalImagePlaceholder">
-        </div>
-          <mat-form-field class="example-full-width">
-            <mat-label>Energia</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Sushi">
-          </mat-form-field>
-      </section>
-      <section class="caloricValue">
-        <label>Ilość: </label>
-        <mat-slider></mat-slider>
-        <div class="units">
-          <mat-checkbox class="m-checkbox">KG</mat-checkbox>
-          <mat-checkbox class="m-checkbox">G</mat-checkbox>
-          <mat-checkbox class="m-checkbox">L</mat-checkbox>
-          <mat-checkbox class="m-checkbox">MIL</mat-checkbox>
-        </div>
-        <label>Waga: </label>
-        <mat-slider></mat-slider>
-  
-  
-        <mat-form-field class="example-full-width">
-          <mat-label>Energia</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="Sushi">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Węglowodany</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="Sushi">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Białko</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="Sushi">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Tłuszcze</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="Sushi">
-        </mat-form-field>
-      </section>
+    <section class="img">
+      <div class="modalImagePlaceholder"></div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Energia</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      </mat-form-field>
+    </section>
+    <section class="caloricValue">
+      <label>Ilość: </label>
+      <mat-slider></mat-slider>
+      <div class="units">
+        <mat-checkbox class="m-checkbox">KG</mat-checkbox>
+        <mat-checkbox class="m-checkbox">G</mat-checkbox>
+        <mat-checkbox class="m-checkbox">L</mat-checkbox>
+        <mat-checkbox class="m-checkbox">MIL</mat-checkbox>
+      </div>
+      <label>Waga: </label>
+      <mat-slider></mat-slider>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Energia</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Węglowodany</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Białko</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Tłuszcze</mat-label>
+        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      </mat-form-field>
+    </section>
   </div>
-    <div mat-dialog-actions style="justify-content: center;">
-      <button mat-raised-button (click)="onNoClick()">Wczytaj dane z wagi</button>
-      <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
-      <button mat-raised-button color="primary">Dodaj</button>
-    </div>
+  <div mat-dialog-actions style="justify-content: center">
+    <button mat-raised-button (click)="onNoClick()">Wczytaj dane z wagi</button>
+    <button mat-button [mat-dialog-close]="produkt" cdkFocusInitial>
+      Dodaj
+    </button>
   </div>
+</div>

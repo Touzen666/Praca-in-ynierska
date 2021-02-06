@@ -19,6 +19,8 @@ export class LodowkaComponent implements OnInit {
   public produkty: Produkt[] = [];
   public user: firebase.User | null;
 
+  // TODO funcja dodajaca produkt do produkty[] TO
+  // handleDodanoProdukt()
   ngOnInit(): void {
     // this.auth.authState.subscribe((user) => {
     //   this.user = user;

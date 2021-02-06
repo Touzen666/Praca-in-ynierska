@@ -14,7 +14,6 @@ import { UserComponent } from './user/user.component';
 import { LodowkaComponent } from './lodowka/lodowka.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ModalCreatorComponent } from './modals/modal-creator/modal-creator.component';
 import { AddProductComponent } from './modals/add-product/add-product.component';
 import { AddProductButtonComponent } from './lodowka/add-product-button/add-product-button.component';
 import { ProductComponent } from './lodowka/product/product.component';
@@ -25,7 +24,6 @@ import { ProductDetaleComponent } from './modals/product-detale/product-detale.c
     AppComponent,
     UserComponent,
     LodowkaComponent,
-    ModalCreatorComponent,
     AddProductComponent,
     AddProductButtonComponent,
     ProductComponent,

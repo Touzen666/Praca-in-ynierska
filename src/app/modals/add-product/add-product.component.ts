@@ -4,6 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { Produkt } from 'src/app/models/produkt';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -14,6 +15,8 @@ export class AddProductComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddProductComponent> // @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
+
+  public produkt: Produkt;
 
   ngOnInit() {}
 

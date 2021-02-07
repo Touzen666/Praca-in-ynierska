@@ -1,4 +1,4 @@
-<div class="modalContentContainer">
+<form class="modalContentContainer" #productForm="ngForm">
   <h1 mat-dialog-title class="modalTitle">
     {{ title }}
     <div class="rightCross">
@@ -14,38 +14,50 @@
   <div mat-dialog-content>
     <section class="img">
       <div class="modalImagePlaceholder"></div>
-      <mat-form-field class="example-full-width">
-        <mat-label>Energia</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+      {{ productForm.value | json }}
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nazwa</mat-label>
+        <input
+          matInput
+          ngModel
+          name="productName"
+          [formControl]="name"
+          pattern="{{ name.value === 'string' }}"
+          placeholder="Ex. Pizza"
+        />
+        <mat-error *ngIf="name.invalid">{{ getErrorMessage() }}</mat-error>
+        <mat-error *ngIf="name.errors.pattern"
+          >Dozwolone tylko litery</mat-error
+        >
       </mat-form-field>
     </section>
     <section class="caloricValue">
       <label>Ilość: </label>
-      <mat-slider></mat-slider>
+      <mat-slider ngModel name="quantity"></mat-slider>
       <div class="units">
-        <mat-checkbox class="m-checkbox">KG</mat-checkbox>
-        <mat-checkbox class="m-checkbox">G</mat-checkbox>
-        <mat-checkbox class="m-checkbox">L</mat-checkbox>
-        <mat-checkbox class="m-checkbox">MIL</mat-checkbox>
+        <mat-checkbox class="m-checkbox" ngModel name="kg">KG</mat-checkbox>
+        <mat-checkbox class="m-checkbox" ngModel name="g">G</mat-checkbox>
+        <mat-checkbox class="m-checkbox" ngModel name="l">L</mat-checkbox>
+        <mat-checkbox class="m-checkbox" ngModel name="mil">MIL</mat-checkbox>
       </div>
       <label>Waga: </label>
-      <mat-slider></mat-slider>
+      <mat-slider ngModel name="weight"></mat-slider>
 
       <mat-form-field class="example-full-width">
         <mat-label>Energia</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+        <input matInput ngModel name="energy" placeholder="Ex. Pizza" />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Węglowodany</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+        <input matInput ngModel name="carbohydrates" placeholder="Ex. Pizza" />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Białko</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+        <input matInput ngModel name="proteines" placeholder="Ex. Pizza" />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Tłuszcze</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+        <input matInput ngModel name="fat" placeholder="Ex. Pizza" />
       </mat-form-field>
     </section>
   </div>
@@ -55,4 +67,4 @@
       Dodaj
     </button>
   </div>
-</div>
+</form>

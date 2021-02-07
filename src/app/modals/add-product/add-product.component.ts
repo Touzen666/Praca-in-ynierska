@@ -5,6 +5,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Produkt } from 'src/app/models/produkt';
+import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -19,7 +20,13 @@ export class AddProductComponent implements OnInit {
   public produkt: Produkt;
 
   ngOnInit() {}
+  name = new FormControl('', [Validators.required, Validators.minLength(2)]);
 
+  getErrorMessage() {
+    if (this.name.hasError('required')) {
+      return 'Prosze wprowadzić nazwe';
+    }
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

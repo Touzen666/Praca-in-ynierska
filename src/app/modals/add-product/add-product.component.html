@@ -1,4 +1,4 @@
-<form class="modalContentContainer" #productForm="ngForm">
+<form class="modalContentContainer" [formGroup]="addProductForm">
   <h1 mat-dialog-title class="modalTitle">
     {{ title }}
     <div class="rightCross">
@@ -10,60 +10,63 @@
       />
     </div>
   </h1>
-
-  <div mat-dialog-content>
+  {{ addProductForm.value | json }}
+  <div mat-dialog-content class="content">
     <section class="img">
       <div class="modalImagePlaceholder"></div>
-      {{ productForm.value | json }}
-      <mat-form-field class="example-full-width" appearance="fill">
+
+     
+      <mat-form-field class="" >
         <mat-label>Nazwa</mat-label>
         <input
           matInput
-          ngModel
-          name="productName"
-          [formControl]="name"
-          pattern="{{ name.value === 'string' }}"
-          placeholder="Ex. Pizza"
+          formControlName="name"
+          placeholder="Jabłko"
         />
-        <mat-error *ngIf="name.invalid">{{ getErrorMessage() }}</mat-error>
-        <mat-error *ngIf="name.errors.pattern"
+        <!-- <mat-error *ngIf="addProductForm.invalid">Nazwa jest wymagana</mat-error>
+        <mat-error *ngIf="addProductForm.errors.pattern"
           >Dozwolone tylko litery</mat-error
-        >
+        > -->
       </mat-form-field>
     </section>
     <section class="caloricValue">
       <label>Ilość: </label>
-      <mat-slider ngModel name="quantity"></mat-slider>
-      <div class="units">
-        <mat-checkbox class="m-checkbox" ngModel name="kg">KG</mat-checkbox>
-        <mat-checkbox class="m-checkbox" ngModel name="g">G</mat-checkbox>
-        <mat-checkbox class="m-checkbox" ngModel name="l">L</mat-checkbox>
-        <mat-checkbox class="m-checkbox" ngModel name="mil">MIL</mat-checkbox>
+      <mat-slider formControlName="quantity"></mat-slider>
+      <div class="units" formGroupName="units">
+        <mat-checkbox class="m-checkbox"  formControlName="kg">KG</mat-checkbox>
+        <mat-checkbox class="m-checkbox"  formControlName="g">G</mat-checkbox>
+        <mat-checkbox class="m-checkbox"  formControlName="l">L</mat-checkbox>
+        <mat-checkbox class="m-checkbox"  formControlName="mil">MIL</mat-checkbox>
       </div>
-      <label>Waga: </label>
-      <mat-slider ngModel name="weight"></mat-slider>
 
       <mat-form-field class="example-full-width">
+        <mat-label>Waga: </mat-label>
+        <input matInput formControlName="weight" type="number" placeholder="10" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
         <mat-label>Energia</mat-label>
-        <input matInput ngModel name="energy" placeholder="Ex. Pizza" />
+        <input matInput formControlName="energy" type="number" placeholder="134kcl" />
+        <span matSuffix>kcl</span>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Węglowodany</mat-label>
-        <input matInput ngModel name="carbohydrates" placeholder="Ex. Pizza" />
+        <input matInput formControlName="carbohydrates" type="number" placeholder="125" />
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Białko</mat-label>
-        <input matInput ngModel name="proteines" placeholder="Ex. Pizza" />
+        <input matInput formControlName="proteines" type="number" placeholder="30g" />
+        <span matSuffix>g</span>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Tłuszcze</mat-label>
-        <input matInput ngModel name="fat" placeholder="Ex. Pizza" />
+        <input matInput formControlName="fat" type="number" placeholder="12g" />
+        <span matSuffix>g</span>
       </mat-form-field>
     </section>
   </div>
   <div mat-dialog-actions style="justify-content: center">
-    <button mat-raised-button (click)="onNoClick()">Wczytaj dane z wagi</button>
-    <button mat-button [mat-dialog-close]="produkt" cdkFocusInitial>
+    <button mat-raised-button [mat-dialog-close]="produkt" >Wczytaj dane z wagi</button>
+    <button mat-raised-button color="primary" [disabled]="!addProductForm.valid"  (click)="submited()" cdkFocusInitial>
       Dodaj
     </button>
   </div>

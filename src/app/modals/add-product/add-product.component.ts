@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Produkt } from 'src/app/models/produkt';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -13,20 +13,56 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class AddProductComponent implements OnInit {
   public title = 'Dodawanie Produktu';
-  constructor(
-    public dialogRef: MatDialogRef<AddProductComponent> // @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
 
   public produkt: Produkt;
+  public hasNotClicked: boolean;
+  @ViewChild('nazwa') poleNazwy;
 
-  ngOnInit() {}
-  name = new FormControl('', [Validators.required, Validators.minLength(2)]);
 
-  getErrorMessage() {
-    if (this.name.hasError('required')) {
-      return 'Prosze wprowadzić nazwe';
+  constructor(
+    public dialogRef: MatDialogRef<AddProductComponent>,
+    public fb: FormBuilder
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) { }
+  addProductForm = this.fb.group({
+    name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
+    quantity: [''],
+    units: this.fb.group([{
+      kg: [''],
+      g: [''],
+      l: [''],
+      mil: [''],
+    }, Validators.required]),
+    weight: ['', Validators.compose([Validators.required, Validators.pattern('[1-9]|10')])],
+    energy: ['', Validators.pattern('[1-9]|10')],
+    carbohydrates: ['', Validators.pattern('[1-9]|10')],
+    proteines: ['', Validators.pattern('[1-9]|10')],
+    fat: ['', Validators.pattern('[1-9]|10')],
+  })
+
+  checkboxClicked() {
+    this.hasNotClicked = false
+  }
+
+  submited() {
+    console.log(this.addProductForm.valid);
+    this.produkt = this.addProductForm.value
+
+    if (this.addProductForm.valid && this.addProductForm.dirty) {
+      console.log(this.addProductForm.value);
+      this.onNoClick();
+      return this.produkt
+    } else {
+      alert('Popraw formularz')
     }
   }
+  ngAfterViewInit() {
+    this.poleNazwy.nativeElement.focus()
+  }
+  ngOnInit() {
+
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

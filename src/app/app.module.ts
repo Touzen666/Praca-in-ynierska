@@ -20,6 +20,7 @@ import { ProductComponent } from './lodowka/product/product.component';
 import { ProductDetaleComponent } from './modals/product-detale/product-detale.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

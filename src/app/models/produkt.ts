@@ -3,14 +3,20 @@ type JednostkaWagi = 'ml' | 'l' | 'kg' | 'g';
 export interface Produkt {
   id?: string;
 
-  nazwa: string;
-  ilosc?: number;
-  jednostkaWagi: JednostkaWagi;
-  waga: number;
-
   img?: string;
-  energia?: number;
-  weglowodany?: number;
-  bialko?: number;
-  tluszcze?: number;
+  name: string;
+  
+  quantity?: number;
+  units: {
+    kg: boolean;
+    g: boolean;
+    l: boolean;
+    mil: boolean;
+  };
+  weight: number;
+   
+  energy?: number;
+  carbohydrates?: number;
+  proteines?: number;
+  fat?: number;
 }

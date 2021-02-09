@@ -1,7 +1,11 @@
+
 .modalImagePlaceholder {
   content: url(../../../assets/image-placeholder.jpg);
-  width: 70vw;
-  margin-left: 9vw;
+
+  width: 170px;
+  height: auto;
+  margin-left: 22vw;
+
 }
 
 .caloricValue {
@@ -11,4 +15,19 @@
 
 .m-checkbox {
   padding-left: 15px;
+}
+
+@media (min-width: 400px) {
+  .content{
+    padding-left: 27%;
+    padding-right: 27%;
+  }
+  .img{
+    padding-left: 27%;
+    padding-right: 27%;
+  }
+  .modalImagePlaceholder {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }

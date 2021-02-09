@@ -2,12 +2,7 @@
   <h1 mat-dialog-title class="modalTitle">
     {{ title }}
     <div class="rightCross">
-      <img
-        class="cancelCross"
-        (click)="onNoClick()"
-        src="../../../assets/cancel.png"
-        alt=""
-      />
+      <img class="cancelCross" (click)="onNoClick()" src="../../../assets/cancel.png" alt="" />
     </div>
   </h1>
   {{ addProductForm.value | json }}
@@ -15,29 +10,25 @@
     <section class="img">
       <div class="modalImagePlaceholder"></div>
 
-     
-      <mat-form-field class="" >
+
+      <mat-form-field class="">
         <mat-label>Nazwa</mat-label>
-        <input
-          matInput
-          formControlName="name"
-          placeholder="Jabłko"
-        />
-        <!-- <mat-error *ngIf="addProductForm.invalid">Nazwa jest wymagana</mat-error>
-        <mat-error *ngIf="addProductForm.errors.pattern"
-          >Dozwolone tylko litery</mat-error
-        > -->
+        <input matInput formControlName="name" placeholder="Jabłko" />
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors.required">Nazwa jest wymagana</div>
+          <div *ngIf="name.errors.pattern">Dozwolone tylko litery</div>
+        </mat-error>
       </mat-form-field>
     </section>
     <section class="caloricValue">
       <label>Ilość: </label>
       <mat-slider formControlName="quantity"></mat-slider>
-      <div class="units" formGroupName="units">
+      <!-- <div class="units" formGroupName="units">
         <mat-checkbox class="m-checkbox"  formControlName="kg">KG</mat-checkbox>
         <mat-checkbox class="m-checkbox"  formControlName="g">G</mat-checkbox>
         <mat-checkbox class="m-checkbox"  formControlName="l">L</mat-checkbox>
         <mat-checkbox class="m-checkbox"  formControlName="mil">MIL</mat-checkbox>
-      </div>
+      </div> -->
 
       <mat-form-field class="example-full-width">
         <mat-label>Waga: </mat-label>
@@ -65,8 +56,8 @@
     </section>
   </div>
   <div mat-dialog-actions style="justify-content: center">
-    <button mat-raised-button [mat-dialog-close]="produkt" >Wczytaj dane z wagi</button>
-    <button mat-raised-button color="primary" [disabled]="!addProductForm.valid"  (click)="submited()" cdkFocusInitial>
+    <button mat-raised-button [mat-dialog-close]="produkt">Wczytaj dane z wagi</button>
+    <button mat-raised-button color="primary" [disabled]="!addProductForm.valid" (click)="submited()">
       Dodaj
     </button>
   </div>

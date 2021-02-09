@@ -27,18 +27,20 @@ export class AddProductComponent implements OnInit {
   addProductForm = this.fb.group({
     name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
     quantity: [''],
-    units: this.fb.group([{
-      kg: [''],
-      g: [''],
-      l: [''],
-      mil: [''],
-    }, Validators.required]),
+    // units: this.fb.group([{
+    //   kg: [''],
+    //   g: [''],
+    //   l: [''],
+    //   mil: [''],
+    // }, Validators.required]),
     weight: ['', Validators.compose([Validators.required, Validators.pattern('[1-9]|10')])],
     energy: ['', Validators.pattern('[1-9]|10')],
     carbohydrates: ['', Validators.pattern('[1-9]|10')],
     proteines: ['', Validators.pattern('[1-9]|10')],
     fat: ['', Validators.pattern('[1-9]|10')],
   })
+
+  get name() { return this.addProductForm.get('name') }
 
   checkboxClicked() {
     this.hasNotClicked = false
@@ -56,9 +58,7 @@ export class AddProductComponent implements OnInit {
       alert('Popraw formularz')
     }
   }
-  ngAfterViewInit() {
-    this.poleNazwy.nativeElement.focus()
-  }
+
   ngOnInit() {
 
   }

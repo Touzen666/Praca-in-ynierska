@@ -27,12 +27,7 @@ export class AddProductComponent implements OnInit {
   addProductForm = this.fb.group({
     name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
     quantity: [''],
-    // units: this.fb.group([{
-    //   kg: [''],
-    //   g: [''],
-    //   l: [''],
-    //   mil: [''],
-    // }, Validators.required]),
+    units: ['', Validators.required],
     weight: ['', Validators.compose([Validators.required, Validators.pattern('[1-9]|10')])],
     energy: ['', Validators.pattern('[1-9]|10')],
     carbohydrates: ['', Validators.pattern('[1-9]|10')],
@@ -52,8 +47,7 @@ export class AddProductComponent implements OnInit {
 
     if (this.addProductForm.valid && this.addProductForm.dirty) {
       console.log(this.addProductForm.value);
-      this.onNoClick();
-      return this.produkt
+      this.dialogRef.close(this.produkt);
     } else {
       alert('Popraw formularz')
     }
@@ -63,7 +57,7 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  onNoClick(): void {
+  closeModal(): void {
     this.dialogRef.close();
   }
 }

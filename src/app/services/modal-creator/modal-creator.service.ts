@@ -12,7 +12,7 @@ import { Produkt } from '../../models/produkt';
   providedIn: 'root',
 })
 export class ModalCreatorService {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   openDialogAddProduct(): Observable<Produkt> {
     const dialogRef = this.dialog.open(AddProductComponent, {
@@ -25,20 +25,16 @@ export class ModalCreatorService {
 
     return dialogRef.afterClosed();
   }
-  openDialogDetailsProduct(): void {
+  openDialogDetailsProduct(): Observable<Produkt> {
     const dialogRef = this.dialog.open(ProductDetaleComponent, {
       panelClass: ['full-screen-dialog'],
       width: '100%',
       height: '100%',
       maxWidth: '100%',
 
-      // data: { name: this.name, animal: this.animal },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
+    return dialogRef.afterClosed();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

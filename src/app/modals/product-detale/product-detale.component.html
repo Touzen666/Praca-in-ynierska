@@ -1,23 +1,30 @@
 <div class="modalContentContainer">
+
   <h1 mat-dialog-title class="modalTitle">
     {{ title }}
     <div class="rightCross">
-      <img
-        class="cancelCross"
-        (click)="onNoClick()"
-        src="../../../assets/cancel.png"
-        alt=""
-      />
+      <img class="cancelCross" (click)="onNoClick()" src="../../../assets/cancel.png" alt="" />
     </div>
   </h1>
-  <div mat-dialog-content>
-    <mat-list role="list">
-      <mat-list-item role="listitem">Item 1</mat-list-item>
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
-    </mat-list>
+
+  <div class="content">
+    <section class="img">
+      <div class="modalImagePlaceholder"></div>
+
+    </section>
+    <div mat-dialog-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 2</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+      </mat-list>
+    </div>
   </div>
-  <div mat-dialog-actions style="float: right">
-    <button mat-raised-button color="primary">Zjedz</button>
+
+  <div mat-dialog-actions class="eat-bottom-right">
+    <button mat-raised-button color="primary" (click)="eatProduct()">Zjedz</button>
   </div>
 </div>

@@ -1,12 +1,10 @@
 <div>
-  <div *ngIf="user">Hello {{ user.displayName }}</div>
+  <!-- <div *ngIf="user">Hello {{ user.displayName }}</div> -->
 
-  <div *ngFor="let produkt of produkty">
-    <div>{{ produkt.id }}</div>
-    <div>{{ produkt.nazwa }}</div>
+  <div *ngFor="let product of products">
+    <app-product-card [product]="product" cols="2"></app-product-card>
   </div>
 
-  <app-product-card></app-product-card>
-  <!-- <app-add-product-button (dodanoPRoduckt)="handleDodanoProdukt()"></app-add-product-button> -->
+
   <app-add-product-button></app-add-product-button>
 </div>

@@ -9,18 +9,18 @@ import { Produkt } from '../../models/produkt';
   providedIn: 'root',
 })
 export class LodowkaService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   pobierzProduktyWLodowce(user: string): Observable<Produkt[]> {
     return this.firestore
       .collection('users')
       .doc(user)
       .collection('produkty')
-      .get()
+      .valueChanges({ idField: "id" })
       .pipe(
         map((produkty) => {
-          return produkty.docs.map(
-            (produkt) => ({ ...produkt.data(), id: produkt.id } as Produkt)
+          return produkty.map(
+            (produkt) => (produkt as Produkt)
           );
         })
       );

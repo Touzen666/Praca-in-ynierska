@@ -1,6 +1,7 @@
 import { LodowkaService } from '../../services/lodowka/lodowka.service';
 import { ModalCreatorService } from './../../services/modal-creator/modal-creator.service';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-add-product-button',
@@ -10,16 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class AddProductButtonComponent implements OnInit {
   constructor(
     public modalCreator: ModalCreatorService,
-    public lodowka: LodowkaService
-  ) {}
+    public lodowka: LodowkaService,
+    private auth: AngularFireAuth
+
+  ) { }
 
   onClick(): void {
     this.modalCreator.openDialogAddProduct().subscribe((produkt) => {
-      // TODO send event
-      // TODO get user info
-      // this.lodowka.dodajDoLodowki(userId,  produkt);
+      console.log("dostalem produkt", produkt)
+      this.auth.authState.subscribe((user) => {
+        this.lodowka.dodajDoLodowki(user.uid, produkt);
+      });
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -1,5 +1,6 @@
 import { ModalCreatorService } from './../../services/modal-creator/modal-creator.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Produkt } from 'src/app/models/produkt';
 
 @Component({
   selector: 'app-product-card',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  constructor(public modalCreator: ModalCreatorService) {}
+  constructor(public modalCreator: ModalCreatorService) { }
+  @Input() product: Produkt;
 
   public openModal = this.modalCreator;
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

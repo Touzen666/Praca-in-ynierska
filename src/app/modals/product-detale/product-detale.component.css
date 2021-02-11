@@ -1,0 +1,26 @@
+.modalImagePlaceholder {
+    content: url(../../../assets/image-placeholder.jpg);
+  
+    width: 170px;
+    height: auto;
+    padding-left: 23%;
+    padding-right: 23%;
+  
+  }
+  .eat-bottom-right {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+  }
+
+  @media (min-width: 400px) {
+    .modalImagePlaceholder {
+        padding-left: 35%;
+        padding-right: 35%;
+    }
+    .content{
+        padding-left: 33%;
+        padding-right: 33%;
+      }
+  }

@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatGridListModule } from '@angular/material/grid-list';
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
@@ -20,10 +22,12 @@ const MaterialComponents = [
   MatCheckboxModule,
   MatCardModule,
   MatListModule,
+  MatRadioModule,
+  // MatGridListModule
 ];
 
 @NgModule({
   imports: [MaterialComponents],
   exports: [MaterialComponents],
 })
-export class MaterialModule {}
+export class MaterialModule { }

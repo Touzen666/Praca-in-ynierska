@@ -5,7 +5,7 @@ export interface Produkt {
 
   img?: string;
   name: string;
-  
+
   quantity?: number;
   units: {
     kg: boolean;
@@ -14,7 +14,7 @@ export interface Produkt {
     mil: boolean;
   };
   weight: number;
-   
+
   energy?: number;
   carbohydrates?: number;
   proteines?: number;

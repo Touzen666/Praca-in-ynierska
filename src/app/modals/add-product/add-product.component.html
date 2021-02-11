@@ -1,8 +1,8 @@
-<form class="modalContentContainer" [formGroup]="addProductForm">
+<form class="modalContentContainer" [formGroup]="addProductForm" (ngSubmit)="submited()">
   <h1 mat-dialog-title class="modalTitle">
     {{ title }}
     <div class="rightCross">
-      <img class="cancelCross" (click)="onNoClick()" src="../../../assets/cancel.png" alt="" />
+      <img class="cancelCross" (click)="closeModal()" src="../../../assets/cancel.png" alt="" />
     </div>
   </h1>
   {{ addProductForm.value | json }}
@@ -22,26 +22,31 @@
     </section>
     <section class="caloricValue">
       <label>Ilość: </label>
-      <mat-slider formControlName="quantity"></mat-slider>
-      <!-- <div class="units" formGroupName="units">
-        <mat-checkbox class="m-checkbox"  formControlName="kg">KG</mat-checkbox>
-        <mat-checkbox class="m-checkbox"  formControlName="g">G</mat-checkbox>
-        <mat-checkbox class="m-checkbox"  formControlName="l">L</mat-checkbox>
-        <mat-checkbox class="m-checkbox"  formControlName="mil">MIL</mat-checkbox>
-      </div> -->
+      <mat-slider formControlName="quantity" style="width: 70%;"></mat-slider>{{addProductForm.value.quantity}}
+      <br>
+      <mat-radio-group class="units" formControlName="units" aria-label="Select an option">
+        <mat-radio-button class="radio-b" value="kg">KG</mat-radio-button>
+        <mat-radio-button class="radio-b" value="g">G</mat-radio-button>
+        <mat-radio-button class="radio-b" value="l">L</mat-radio-button>
+        <mat-radio-button class="radio-b" value="mil">MIL</mat-radio-button>
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors.required">Jednostka wagi jest wymagana</div>
+        </mat-error>
+      </mat-radio-group>
 
       <mat-form-field class="example-full-width">
         <mat-label>Waga: </mat-label>
         <input matInput formControlName="weight" type="number" placeholder="10" />
       </mat-form-field>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Energia</mat-label>
         <input matInput formControlName="energy" type="number" placeholder="134kcl" />
         <span matSuffix>kcl</span>
       </mat-form-field>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Węglowodany</mat-label>
         <input matInput formControlName="carbohydrates" type="number" placeholder="125" />
+        <span matSuffix>ww</span>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Białko</mat-label>
@@ -57,7 +62,7 @@
   </div>
   <div mat-dialog-actions style="justify-content: center">
     <button mat-raised-button [mat-dialog-close]="produkt">Wczytaj dane z wagi</button>
-    <button mat-raised-button color="primary" [disabled]="!addProductForm.valid" (click)="submited()">
+    <button mat-raised-button color="primary" [disabled]="!addProductForm.valid" type="submit">
       Dodaj
     </button>
   </div>

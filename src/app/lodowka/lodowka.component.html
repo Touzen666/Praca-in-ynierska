@@ -2,9 +2,16 @@
   <!-- <div *ngIf="user">Hello {{ user.displayName }}</div> -->
 
   <div *ngFor="let product of products">
-    <app-product-card [product]="product" cols="2"></app-product-card>
+    <app-product-card [product]="product"></app-product-card>
   </div>
 
+  <!-- <div class="div" cols="2">
+    <div class="div" style="background-color: aqua; height: 100px;">1</div>
+    <div class="div" style="background-color: aqua; height: 100px;">1</div>
+    <div class="div" style="background-color: aqua; height: 100px;">1</div>
+    <div class="div" style="background-color: aqua; height: 100px;">1</div>
+
+  </div> -->
 
   <app-add-product-button></app-add-product-button>
 </div>

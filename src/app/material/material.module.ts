@@ -23,7 +23,7 @@ const MaterialComponents = [
   MatCardModule,
   MatListModule,
   MatRadioModule,
-  // MatGridListModule
+  MatGridListModule
 ];
 
 @NgModule({

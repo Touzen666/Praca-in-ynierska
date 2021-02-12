@@ -25,12 +25,13 @@ export class ModalCreatorService {
 
     return dialogRef.afterClosed();
   }
-  openDialogDetailsProduct(): Observable<Produkt> {
+  openDialogDetailsProduct(product: Produkt): Observable<Produkt> {
     const dialogRef = this.dialog.open(ProductDetaleComponent, {
       panelClass: ['full-screen-dialog'],
       width: '100%',
       height: '100%',
       maxWidth: '100%',
+      data: { product: product },
 
     });
 

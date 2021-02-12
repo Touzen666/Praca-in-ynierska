@@ -6,17 +6,18 @@ import {
 } from '@angular/material/dialog';
 import { Produkt } from 'src/app/models/produkt';
 import { FormBuilder, Validators } from '@angular/forms';
+// import { ProductDetaleComponent } from '../product-detale/product-detale.component';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css'],
+  // providers: [ProductDetaleComponent]
 })
 export class AddProductComponent implements OnInit {
   public title = 'Dodawanie Produktu';
 
-  public produkt: Produkt;
+  public product: Produkt;
   public hasNotClicked: boolean;
-  @ViewChild('nazwa') poleNazwy;
 
 
   constructor(
@@ -24,6 +25,7 @@ export class AddProductComponent implements OnInit {
     public fb: FormBuilder
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
+
   addProductForm = this.fb.group({
     name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
     quantity: [''],
@@ -43,11 +45,11 @@ export class AddProductComponent implements OnInit {
 
   submited() {
     console.log(this.addProductForm.valid);
-    this.produkt = this.addProductForm.value
+    this.product = this.addProductForm.value
 
     if (this.addProductForm.valid && this.addProductForm.dirty) {
       console.log(this.addProductForm.value);
-      this.dialogRef.close(this.produkt);
+      this.dialogRef.close(this.product);
     } else {
       alert('Popraw formularz')
     }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   MatDialog,
@@ -8,7 +8,7 @@ import {
 import { Produkt } from 'src/app/models/produkt';
 import { LodowkaService } from 'src/app/services/lodowka/lodowka.service';
 import { ModalCreatorService } from 'src/app/services/modal-creator/modal-creator.service';
-
+import { AddProductComponent } from '../add-product/add-product.component';
 @Component({
   selector: 'app-product-detale',
   templateUrl: './product-detale.component.html',
@@ -16,24 +16,22 @@ import { ModalCreatorService } from 'src/app/services/modal-creator/modal-creato
 })
 export class ProductDetaleComponent implements OnInit {
   public title = 'Produkt';
-  @Input() product: Produkt;
   constructor(
     // public modalCreator: ModalCreatorService,
     public lodowka: LodowkaService,
+    // public prductModal: AddProductComponent,
     private auth: AngularFireAuth,
-    public dialogRef: MatDialogRef<ProductDetaleComponent> // @Inject(MAT_DIALOG_DATA) public data: DialogData
+    public dialogRef: MatDialogRef<ProductDetaleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { product: Produkt }
   ) { }
 
   ngOnInit() { }
 
   eatProduct() {
-    // this.modalCreator.openDialogDetailsProduct().subscribe((produkt) => {
-    //   console.log("Wziąłem produkt", produkt)
-    //   this.auth.authState.subscribe((user) => {
-    //     this.lodowka.wyjmijZLodowki(user.uid, produkt.id);
-    //     this.dialogRef.close();
-    //   });
-    // });
+    this.auth.authState.subscribe((user) => {
+      this.lodowka.wyjmijZLodowki(user.uid, this.data.product.id);
+      this.dialogRef.close();
+    });
   }
 
   onNoClick(): void {

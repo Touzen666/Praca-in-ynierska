@@ -18,10 +18,16 @@ export class LodowkaComponent implements OnInit {
 
   public products: Produkt[] = [];
   public user: firebase.User | null;
-
+  public breakpoint;
   // TODO funcja dodajaca produkt do produkty[] TO
   // handleDodanoProdukt()
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 2 : 6;
+  }
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 400) ? 2 : 6;
+    console.log(window.innerWidth);
+
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.lodowkaService

@@ -27,7 +27,7 @@ export class AddProductComponent implements OnInit {
   ) { }
 
   addProductForm = this.fb.group({
-    name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
+    name: ['', Validators.compose([Validators.required, Validators.pattern('[A-ĄąĆćĘęŁłŃńÓóŚśŹźŻż]*')])],
     quantity: [''],
     units: ['', Validators.required],
     weight: ['', Validators.compose([Validators.required, Validators.pattern('[1-9]|10')])],

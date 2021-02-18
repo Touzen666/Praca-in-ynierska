@@ -1,8 +1,8 @@
 .product-card{
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     text-align: center;
-    margin: 30px;
+    cursor: pointer;
 }
 .card-title{
     position: absolute;
@@ -15,6 +15,8 @@
 }
 .modalImagePlaceholder{
 	content:url(../../../assets/image-placeholder.jpg);
-	width: 125px;
+	width: 100px;
 
 }
+
+

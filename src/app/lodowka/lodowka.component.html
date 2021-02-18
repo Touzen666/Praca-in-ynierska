@@ -5,8 +5,9 @@
     <app-product-card [product]="product"></app-product-card>
   </div> -->
 
-  <mat-grid-list [cols]="breakpoint" rowHeight="fit" style="height: 300px" (window:resize)="onResize($event)">
-    <mat-grid-tile *ngFor="let product of products" style="background-color: aqua; margin: 4px;">
+  <mat-grid-list [cols]="breakpoint" rowHeight="fit" style="height: 280px" class="grid"
+    (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let product of products">
       <app-product-card [product]="product"></app-product-card>
     </mat-grid-tile>
   </mat-grid-list>

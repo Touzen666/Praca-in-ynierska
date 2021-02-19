@@ -31,7 +31,7 @@ export class LodowkaComponent implements OnInit {
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.lodowkaService
-        .pobierzProduktyWLodowce(this.user.uid)
+        .pobierzProduktyWLodowce(this.user.uid, false)
         .subscribe((produkty) => {
           this.products = produkty;
           console.log('pobrano produkty', produkty);

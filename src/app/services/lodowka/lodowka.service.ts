@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/storage';
 import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { maxDate, minDate } from 'src/constants';
 import { Produkt } from '../../models/produkt';
 
 @Injectable({
@@ -11,15 +12,22 @@ import { Produkt } from '../../models/produkt';
 export class LodowkaService {
   constructor(private firestore: AngularFirestore) { }
 
-  // zjedzoneProdukty(user: string, idProduktu: string): Promise<void> {
-
-  // }
-
-  pobierzProduktyWLodowce(user: string): Observable<Produkt[]> {
+  pobierzProduktyWLodowce(
+    user: string,
+    eaten: boolean,
+    options?: {
+      eatenDateFrom?: Date,
+      eatenDateTo?: Date
+    }
+  ): Observable<Produkt[]> {
     return this.firestore
       .collection('users')
       .doc(user)
-      .collection('produkty', ref => ref.where("eaten", "==", false))
+      .collection('produkty', ref => ref
+        .where("eaten", "==", eaten)
+        .where("eatenDate", ">", options?.eatenDateFrom?.getTime() || minDate)
+        .where("eatenDate", "<", options?.eatenDateTo?.getTime() || maxDate)
+      )
       .valueChanges({ idField: "id" })
       .pipe(
         map((produkty) => {
@@ -38,7 +46,8 @@ export class LodowkaService {
       .doc()
       .set({
         ...produkt,
-        eaten: false
+        eaten: false,
+        eatenDate: 1
       });
   }
 
@@ -49,7 +58,8 @@ export class LodowkaService {
       .collection('produkty')
       .doc(idProduktu)
       .update({
-        eaten: true
+        eaten: true,
+        eatenDate: Date.now()
       });
   }
 }

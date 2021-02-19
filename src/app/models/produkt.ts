@@ -21,4 +21,5 @@ export interface Produkt {
   fat?: number;
 
   eaten?: boolean;
+  eatenDate?: number;
 }

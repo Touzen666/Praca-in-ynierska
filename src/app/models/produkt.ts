@@ -19,4 +19,6 @@ export interface Produkt {
   carbohydrates?: number;
   proteines?: number;
   fat?: number;
+
+  eaten?: boolean;
 }

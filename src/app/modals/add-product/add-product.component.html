@@ -29,14 +29,17 @@
         <mat-radio-button class="radio-b" value="g">G</mat-radio-button>
         <mat-radio-button class="radio-b" value="l">L</mat-radio-button>
         <mat-radio-button class="radio-b" value="mil">MIL</mat-radio-button>
-        <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
-          <div *ngIf="name.errors.required">Jednostka wagi jest wymagana</div>
+        <mat-error *ngIf="units.invalid && (units.dirty || units.touched)">
+          <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
         </mat-error>
       </mat-radio-group>
 
       <mat-form-field class="example-full-width">
         <mat-label>Waga: </mat-label>
         <input matInput formControlName="weight" type="number" placeholder="10" />
+        <mat-error *ngIf="weight.invalid && (weight.dirty || weight.touched)">
+          <div *ngIf="weight.errors.required">Waga jest wymagana</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Energia</mat-label>

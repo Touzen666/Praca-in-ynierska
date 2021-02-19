@@ -38,6 +38,8 @@ export class AddProductComponent implements OnInit {
   })
 
   get name() { return this.addProductForm.get('name') }
+  get units() { return this.addProductForm.get('units') }
+  get weight() { return this.addProductForm.get('weight') }
 
   checkboxClicked() {
     this.hasNotClicked = false

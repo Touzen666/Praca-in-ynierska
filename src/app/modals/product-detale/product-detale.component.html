@@ -14,12 +14,27 @@
     </section>
     <div mat-dialog-content>
       <mat-list role="list">
-        <mat-list-item role="listitem">{{data.product.name}}</mat-list-item>
-        <mat-list-item role="listitem">{{data.product.name}}</mat-list-item>
-        <mat-list-item role="listitem">{{data.product.name}}</mat-list-item>
-        <mat-list-item role="listitem">{{data.product.name}}</mat-list-item>
-        <mat-list-item role="listitem">{{data.product.name}}</mat-list-item>
-        <mat-list-item role="listitem">{{data.product.name}}</mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Nazwa:</mat-label>{{data.product.name}}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Ilość:</mat-label>{{data.product.quantity}}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Waga:</mat-label>{{data.product.weight }}{{data.product.units }}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Węglowodany:</mat-label>{{data.product.carbohydrates}}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Energia:</mat-label>{{data.product.energy}}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Tłuszcz:</mat-label>{{data.product.fat}}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Białko:</mat-label>{{data.product.proteines}}
+        </mat-list-item>
       </mat-list>
     </div>
   </div>

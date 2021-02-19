@@ -11,11 +11,15 @@ import { Produkt } from '../../models/produkt';
 export class LodowkaService {
   constructor(private firestore: AngularFirestore) { }
 
+  // zjedzoneProdukty(user: string, idProduktu: string): Promise<void> {
+
+  // }
+
   pobierzProduktyWLodowce(user: string): Observable<Produkt[]> {
     return this.firestore
       .collection('users')
       .doc(user)
-      .collection('produkty')
+      .collection('produkty', ref => ref.where("eaten", "==", false))
       .valueChanges({ idField: "id" })
       .pipe(
         map((produkty) => {
@@ -32,15 +36,20 @@ export class LodowkaService {
       .doc(user)
       .collection('produkty')
       .doc()
-      .set(produkt);
+      .set({
+        ...produkt,
+        eaten: false
+      });
   }
 
-  wyjmijZLodowki(user: string, idProduktu: string): Promise<void> {
+  zjedzProdukt(user: string, idProduktu: string): Promise<void> {
     return this.firestore
       .collection('users')
       .doc(user)
       .collection('produkty')
       .doc(idProduktu)
-      .delete();
+      .update({
+        eaten: true
+      });
   }
 }

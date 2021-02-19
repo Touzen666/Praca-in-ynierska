@@ -19,6 +19,7 @@ import { AddProductButtonComponent } from './lodowka/add-product-button/add-prod
 import { ProductComponent } from './lodowka/product/product.component';
 import { ProductDetaleComponent } from './modals/product-detale/product-detale.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabelaComponent } from './tabela/tabela.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddProductButtonComponent,
     ProductComponent,
     ProductDetaleComponent,
+    TabelaComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
@@ -23,7 +25,9 @@ const MaterialComponents = [
   MatCardModule,
   MatListModule,
   MatRadioModule,
-  MatGridListModule
+  MatGridListModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 @NgModule({

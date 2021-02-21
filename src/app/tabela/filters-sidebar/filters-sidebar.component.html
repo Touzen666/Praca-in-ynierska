@@ -1,0 +1,17 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav position="end" #drawer mode="over" class="drawer">
+        <h3 class="title">Filters</h3>
+        <mat-label class="inputs-position">
+            <app-filters-options></app-filters-options>
+        </mat-label>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-fab (click)="drawer.toggle()" class="fab-bottom-right" color="primary"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon><img src="../../../assets/tune.png" alt=""></mat-icon>
+        </button>
+        <div class="container">
+            <app-tabela></app-tabela>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

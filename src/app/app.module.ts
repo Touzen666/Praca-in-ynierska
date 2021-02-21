@@ -20,6 +20,8 @@ import { ProductComponent } from './lodowka/product/product.component';
 import { ProductDetaleComponent } from './modals/product-detale/product-detale.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabelaComponent } from './tabela/tabela.component';
+import { FiltersSidebarComponent } from './tabela/filters-sidebar/filters-sidebar.component';
+import { FiltersOptionsComponent } from './tabela/filters-options/filters-options.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { TabelaComponent } from './tabela/tabela.component';
     ProductComponent,
     ProductDetaleComponent,
     TabelaComponent,
+    FiltersSidebarComponent,
+    FiltersOptionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,4 +51,4 @@ import { TabelaComponent } from './tabela/tabela.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

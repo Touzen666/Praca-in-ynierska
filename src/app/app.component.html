@@ -1,13 +1,20 @@
-<p>
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button mat-raised-button routerLink="lodowka">Lodowka</button>
-      <button mat-raised-button routerLink="tabelaKalorii">Tabela</button>
-      <button mat-raised-button routerLink="user">Login</button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</p>
-
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="over" class="drawer">
+    <h3 class="title">Menu</h3>
+    <mat-label class="inputs-position">
+      <button mat-raised-button color="primary" class="label-button" routerLink="lodowka">Lodowka</button><br>
+      <button mat-raised-button color="primary" class="label-button" routerLink="tabelaKalorii">Tabela</button><br>
+      <button mat-raised-button color="primary" class="label-button" routerLink="user">Login</button><br>
+    </mat-label>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" style=" left: 0 ; right: 0;top: 0; width: 100%;  position: fixed; z-index: 100;">
+      <button mat-button (click)="drawer.toggle()">
+        <img style="height: 30px;" src="../assets/menu.png" alt="menu">
+      </button>
+    </mat-toolbar>
+    <div class="container" style="margin-top: 70px;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

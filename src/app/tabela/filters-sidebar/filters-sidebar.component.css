@@ -1,0 +1,46 @@
+.example-container {
+    width: 100vw;
+    height: 94vh;
+    margin: 0;
+    
+  }
+  .drawer{
+      padding: 10px;
+      width: 230px;
+  }
+  .title{
+      font-weight:  bold;
+      font-size: 20px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 40px;
+     text-align: center;
+     padding-top: 24px;
+  }
+  .inputs-position{
+    position: relative;
+    top: 70px;
+  }
+  .label-button{
+      margin-left: 26px;
+      margin-right: 26px;
+      margin-bottom: 5px;
+  }
+  mat-drawer-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .fab-bottom-right {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+  }
+ ::ng-deep .mat-drawer-content {
+    display: unset !important;
+    height: unset !important;
+}

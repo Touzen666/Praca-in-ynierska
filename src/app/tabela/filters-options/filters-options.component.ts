@@ -15,25 +15,19 @@ export class FiltersOptionsComponent implements OnInit {
 
   constructor(
     private tableService: TableService,
-    private auth: AngularFireAuth
   ) {
-    var date = new Date();
-    const fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
-    const toDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);
     this.range = new FormGroup({
-      start: new FormControl(fromDate),
-      end: new FormControl(toDate)
+      start: new FormControl(this.tableService.range.value.start),
+      end: new FormControl(this.tableService.range.value.end)
     });
   }
 
   ngOnInit(): void {
   }
   refreshSubscription() {
-    this.auth.authState.subscribe((user) => {
-      this.user = user;
-      // console.log(this.range.value);
-      this.tableService.refreshSubscription();
-      this.tableService.setTime(this.user, this.range.value.start);
-    });
+
+    this.tableService.setTime(this.range.value);
+    this.tableService.refreshSubscription();
+
   }
 }

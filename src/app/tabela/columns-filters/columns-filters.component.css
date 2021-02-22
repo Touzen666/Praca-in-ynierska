@@ -1,0 +1,15 @@
+.checkbox-section{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    height: 200px;
+}
+.title{
+    font-weight: 700;
+}
+.checkbox-position{
+    text-align: left;
+    width: 100px;
+    margin-left: 15px;
+    margin-top: 15px;
+}

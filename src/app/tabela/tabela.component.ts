@@ -11,6 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
+import { TableService } from '../services/table/table.service';
 
 @Component({
   selector: 'app-tabela',
@@ -19,13 +20,14 @@ import { MatSort, Sort } from '@angular/material/sort';
 })
 export class TabelaComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'quantity', 'weight', 'energy', 'carbohydrates', 'proteines', 'fat'];
-  public dataSource;
   public sortedData;
-  public products: Produkt[] = [];
+  public products = this.tableService.products;
+  public range = this.tableService.range;
+  public dataSource = this.tableService.dataSource;
   public user: firebase.User | null;
 
-  public range: FormGroup;
-  public subscription: Subscription;
+
+
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   ngAfterViewInit() {
@@ -34,16 +36,9 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    private lodowkaService: LodowkaService,
+    private tableService: TableService,
     private auth: AngularFireAuth
   ) {
-    var date = new Date();
-    const fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
-    const toDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);
-    this.range = new FormGroup({
-      start: new FormControl(fromDate),
-      end: new FormControl(toDate)
-    });
     this.sortedData = this.products.slice();
   }
 
@@ -52,30 +47,12 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.auth.authState.subscribe((user) => {
       this.user = user;
-      this.refreshSubscription()
+      // console.log(this.range);
+      this.tableService.refreshSubscription();
+      this.tableService.setTime(this.user, this.range);
     });
   }
-  refreshSubscription() {
-    if (this.subscription) {
-      this.subscription.unsubscribe()
-    }
 
-    const end = this.range.value.end
-    if (!end) return;
-    end.setHours(23)
-    end.setMinutes(59)
-
-    this.subscription = this.lodowkaService
-      .pobierzProduktyWLodowce(this.user.uid, true, {
-        eatenDateFrom: this.range.value.start,
-        eatenDateTo: end
-      })
-      .subscribe((produkty) => {
-        this.products = produkty;
-        console.log('pobrano produkty', produkty);
-        this.dataSource = new MatTableDataSource<Produkt>(this.products);
-      });
-  }
 
   sortData(sort: Sort) {
     const data = this.products.slice();

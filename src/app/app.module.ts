@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabelaComponent } from './tabela/tabela.component';
 import { FiltersSidebarComponent } from './tabela/filters-sidebar/filters-sidebar.component';
 import { FiltersOptionsComponent } from './tabela/filters-options/filters-options.component';
+import { ColumnsFiltersComponent } from './tabela/columns-filters/columns-filters.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FiltersOptionsComponent } from './tabela/filters-options/filters-option
     TabelaComponent,
     FiltersSidebarComponent,
     FiltersOptionsComponent,
+    ColumnsFiltersComponent,
   ],
   imports: [
     BrowserModule,

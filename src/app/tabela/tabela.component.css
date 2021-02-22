@@ -3,7 +3,26 @@ table {
   }
   th.mat-sort-header-sorted {
     color: black;
+
   }
-  .table-container{
-    margin: 10px;
+   th{
+    text-align: center !important;
+    height: 30px !important;
+    font-weight: 600;
+  }
+
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 20px;
+}
+
+td{
+  text-align: center !important;
+}
+ 
+  @media (max-width: 414px) {
+    .table-container{
+      width: 515px;
+    }
   }

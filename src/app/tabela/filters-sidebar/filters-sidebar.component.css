@@ -40,7 +40,21 @@
     bottom: 16px;
     z-index: 100;
   }
+  img{
+    padding-left: 2px;
+  }
  ::ng-deep .mat-drawer-content {
-    display: unset !important;
-    height: unset !important;
+    /* display: unset !important; */
+    /* height: unset !important; */
+    
+    overflow: overlay!important;
+
+}
+.container{
+  width: 100%;
+}
+@media (max-width: 414px) {
+  .table-container{
+    width: 515px;
+  }
 }

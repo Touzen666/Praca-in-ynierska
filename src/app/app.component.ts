@@ -13,7 +13,7 @@ import firebase from 'firebase';
 export class AppComponent {
   title = 'Praca-inzynierska';
   public user: firebase.User
-  constructor(public auth: AngularFireAuth, private drawerRightService: DrawerRightService) {
+  constructor(public auth: AngularFireAuth, public drawerRightService: DrawerRightService) {
     this.auth.authState.subscribe((user) => {
       this.user = user;
     })

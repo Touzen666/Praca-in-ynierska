@@ -8,7 +8,7 @@ import { DrawerRightService } from 'src/app/services/drawerRight/drawer-right.se
 })
 export class FiltersButtonComponent implements OnInit {
 
-  constructor(private drawerrightService: DrawerRightService) { }
+  constructor(public drawerRightService: DrawerRightService) { }
 
   ngOnInit(): void {
 

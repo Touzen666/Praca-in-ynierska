@@ -4,6 +4,7 @@ import { LodowkaComponent } from './lodowka/lodowka.component';
 import { UserComponent } from './user/user.component'
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { FiltersSidebarComponent } from './tabela/filters-sidebar/filters-sidebar.component';
+import { TabelaComponent } from './tabela/tabela.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: "tabelaKalorii",
-    component: FiltersSidebarComponent,
+    component: TabelaComponent,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo(['user']) }
   }

@@ -19,9 +19,12 @@ export class AddProductButtonComponent implements OnInit {
   onClick(): void {
     this.modalCreator.openDialogAddProduct().subscribe((produkt) => {
       console.log("dostalem produkt", produkt)
-      this.auth.authState.subscribe((user) => {
-        this.lodowka.dodajDoLodowki(user.uid, produkt);
-      });
+      if (produkt) {
+        this.auth.authState.subscribe((user) => {
+          this.lodowka.dodajDoLodowki(user.uid, produkt);
+        });
+      }
+
     });
   }
 

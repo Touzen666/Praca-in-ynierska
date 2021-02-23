@@ -51,8 +51,8 @@ export class TableService {
         .subscribe((produkty) => {
           this.products.next(produkty);
           console.log('pobrano produkty', produkty);
-          // this.dataSource = new MatTableDataSource<Produkt>(this.products);
         });
     })
   }
+
 }

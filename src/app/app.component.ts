@@ -8,7 +8,8 @@ import firebase from 'firebase/app';
 })
 export class AppComponent {
   title = 'Praca-inzynierska';
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth) { }
+
   login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }

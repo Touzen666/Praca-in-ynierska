@@ -1,12 +1,5 @@
 <div>
-  <!-- <div *ngIf="user">Hello {{ user.displayName }}</div> -->
-
-  <!-- <div *ngFor="let product of products">
-    <app-product-card [product]="product"></app-product-card>
-  </div> -->
-
-  <mat-grid-list [cols]="breakpoint" rowHeight="fit" style="height: 300px" class="grid"
-    (window:resize)="onResize($event)">
+  <mat-grid-list [cols]="breakpoint" style="height: 300px" class="grid" (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let product of products">
       <app-product-card [product]="product"></app-product-card>
     </mat-grid-tile>

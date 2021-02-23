@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
+import { FirestoreSyncService } from 'ngx-auth-firebaseui';
+import { DrawerRightService } from './services/drawerRight/drawer-right.service';
+import firebase from 'firebase';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +12,12 @@ import firebase from 'firebase/app';
 })
 export class AppComponent {
   title = 'Praca-inzynierska';
-  constructor(public auth: AngularFireAuth) { }
+  public user: firebase.User
+  constructor(public auth: AngularFireAuth, private drawerRightService: DrawerRightService) {
+    this.auth.authState.subscribe((user) => {
+      this.user = user;
+    })
+  }
 
   login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());

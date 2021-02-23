@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DrawerRightService } from 'src/app/services/drawerRight/drawer-right.service';
 
 @Component({
   selector: 'app-filters-button',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiltersButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private drawerrightService: DrawerRightService) { }
 
   ngOnInit(): void {
 

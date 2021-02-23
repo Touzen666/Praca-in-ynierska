@@ -8,6 +8,10 @@
     padding: 10px;
     width: 230px;
 }
+.drawerEnd{
+  padding: 10px;
+  width: 300px;
+}
 .title{
     font-weight:  bold;
     font-size: 20px;

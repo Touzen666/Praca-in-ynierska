@@ -7,7 +7,7 @@
       <button mat-button color="primary" class="label-button" routerLink="user">Login</button><br>
     </mat-label>
   </mat-sidenav>
-  <mat-sidenav position="end" #drawerEnd mode="over" class="drawer">
+  <mat-sidenav position="end" [opened]="drawerRightService.open" mode="over" class="drawerEnd">
     <h3 class="title">Filtry</h3>
     <mat-label class="inputs-position">
       <app-filters-options></app-filters-options>
@@ -19,6 +19,7 @@
       <button mat-button (click)="drawer.toggle()">
         <img style="height: 30px;" src="../assets/menu.png" alt="menu">
       </button>
+      <img *ngIf="user" [src]="user.photoURL">
     </mat-toolbar>
     <div class="container">
       <router-outlet></router-outlet>

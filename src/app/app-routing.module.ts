@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LodowkaComponent } from './lodowka/lodowka.component';
 import { UserComponent } from './user/user.component'
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { FiltersSidebarComponent } from './tabela/filters-sidebar/filters-sidebar.component';
 import { TabelaComponent } from './tabela/tabela.component';
 
 const routes: Routes = [

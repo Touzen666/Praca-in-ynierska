@@ -20,7 +20,6 @@ import { ProductComponent } from './lodowka/product/product.component';
 import { ProductDetaleComponent } from './modals/product-detale/product-detale.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabelaComponent } from './tabela/tabela.component';
-import { FiltersSidebarComponent } from './tabela/filters-sidebar/filters-sidebar.component';
 import { FiltersOptionsComponent } from './tabela/filters-options/filters-options.component';
 import { ColumnsFiltersComponent } from './tabela/columns-filters/columns-filters.component';
 import { FiltersButtonComponent } from './tabela/filters-button/filters-button.component';
@@ -36,7 +35,6 @@ import { FiltersButtonComponent } from './tabela/filters-button/filters-button.c
     ProductComponent,
     ProductDetaleComponent,
     TabelaComponent,
-    FiltersSidebarComponent,
     FiltersOptionsComponent,
     ColumnsFiltersComponent,
     FiltersButtonComponent,

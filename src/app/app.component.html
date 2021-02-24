@@ -4,7 +4,15 @@
     <mat-label class="inputs-position">
       <button mat-button color="primary" class="label-button" routerLink="lodowka">Lodowka</button><br>
       <button mat-button color="primary" class="label-button" routerLink="tabelaKalorii">Tabela</button><br>
-      <button mat-button color="primary" class="label-button" routerLink="user">Login</button><br>
+      <div _ngcontent-eps-c192="" class="actions ng-tns-c192-3">
+        <!--bindings={}-->
+        <!--bindings={}--><button _ngcontent-eps-c192="" color="warn" mat-stroked-button=""
+          class="mat-focus-indicator sign-out-button action-button ng-tns-c192-3 mat-stroked-button mat-button-base mat-warn"
+          ng-reflect-color="warn"><span class="mat-button-wrapper">Sign out</span><span matripple=""
+            class="mat-ripple mat-button-ripple" ng-reflect-disabled="false" ng-reflect-centered="false"
+            ng-reflect-trigger="[object HTMLButtonElement]"></span><span
+            class="mat-button-focus-overlay"></span></button>
+      </div>
     </mat-label>
   </mat-sidenav>
   <mat-sidenav position="end" [opened]="drawerRightService.open" mode="over" class="drawerEnd">
@@ -20,6 +28,7 @@
         <img style="height: 30px;" src="../assets/menu.png" alt="menu">
       </button>
       <img *ngIf="user" [src]="user.photoURL">
+
     </mat-toolbar>
     <div class="container">
       <router-outlet></router-outlet>

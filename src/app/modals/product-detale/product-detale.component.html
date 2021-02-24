@@ -21,13 +21,13 @@
           <mat-label>Ilość:</mat-label>{{data.product.quantity}}
         </mat-list-item>
         <mat-list-item role="listitem">
-          <mat-label>Waga:</mat-label>{{data.product.weight }}{{data.product.units }}
+          <mat-label>Waga jednostki:</mat-label>{{data.product.weight }}{{data.product.units }}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-label>Kalorie:</mat-label>{{data.product.energy}}<p *ngIf="data.product.energy">kcl</p>
         </mat-list-item>
         <mat-list-item role="listitem">
           <mat-label>Węglowodany:</mat-label>{{data.product.carbohydrates}}
-        </mat-list-item>
-        <mat-list-item role="listitem">
-          <mat-label>Energia:</mat-label>{{data.product.energy}}
         </mat-list-item>
         <mat-list-item role="listitem">
           <mat-label>Tłuszcz:</mat-label>{{data.product.fat}}

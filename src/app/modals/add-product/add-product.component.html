@@ -35,14 +35,14 @@
         </mat-error>
       </mat-radio-group>
       <mat-form-field class="example-full-width">
-        <mat-label>Waga: </mat-label>
+        <mat-label>Waga jednostki: </mat-label>
         <input matInput formControlName="weight" type="number" placeholder="10" />
         <mat-error *ngIf="weight.invalid && (weight.dirty || weight.touched)">
           <div *ngIf="weight.errors.required">Waga jest wymagana</div>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width" style="width: 190px;">
-        <mat-label>Energia</mat-label>
+        <mat-label>Kalorie</mat-label>
         <input matInput formControlName="energy" type="number" placeholder="134kcl" />
         <span matSuffix>kcl</span>
       </mat-form-field>

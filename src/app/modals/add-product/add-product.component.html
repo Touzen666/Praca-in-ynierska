@@ -5,12 +5,9 @@
       <img class="cancelCross" (click)="closeModal()" src="../../../assets/cancel.png" alt="" />
     </div>
   </h1>
-  {{ addProductForm.value | json }}
   <div mat-dialog-content class="content">
     <section class="img">
       <div class="modalImagePlaceholder"></div>
-
-
       <mat-form-field class="">
         <mat-label>Nazwa</mat-label>
         <input matInput formControlName="name" placeholder="Jabłko" />
@@ -25,15 +22,18 @@
       <mat-slider formControlName="quantity" style="width: 70%;"></mat-slider>{{addProductForm.value.quantity}}
       <br>
       <mat-radio-group class="units" formControlName="units" aria-label="Select an option">
-        <mat-radio-button class="radio-b" value="kg">KG</mat-radio-button>
-        <mat-radio-button class="radio-b" value="g">G</mat-radio-button>
-        <mat-radio-button class="radio-b" value="l">L</mat-radio-button>
-        <mat-radio-button class="radio-b" value="mil">MIL</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-b" value="kg"></mat-radio-button>
+        <mat-label>KG</mat-label>
+        <mat-radio-button color="primary" class="radio-b" value="g"></mat-radio-button>
+        <mat-label>G</mat-label>
+        <mat-radio-button color="primary" class="radio-b" value="l"></mat-radio-button>
+        <mat-label>L</mat-label>
+        <mat-radio-button color="primary" class="radio-b" value="mil"></mat-radio-button>
+        <mat-label>MIL</mat-label>
         <mat-error *ngIf="units.invalid && (units.dirty || units.touched)">
           <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
         </mat-error>
       </mat-radio-group>
-
       <mat-form-field class="example-full-width">
         <mat-label>Waga: </mat-label>
         <input matInput formControlName="weight" type="number" placeholder="10" />
@@ -65,7 +65,7 @@
   </div>
   <div mat-dialog-actions style="justify-content: center">
     <button mat-raised-button [mat-dialog-close]="product">Wczytaj dane z wagi</button>
-    <button mat-raised-button color="primary" [disabled]="!addProductForm.valid" type="submit">
+    <button mat-raised-button color="primary" type="submit">
       Dodaj
     </button>
   </div>

@@ -161,3 +161,13 @@ table {
 .full-screen-dialog .mat-dialog-content {
   max-height: unset !important;
 }
+.header{
+  background-color: tomato;
+  text-align: center;
+  width: 100%;
+}
+.header-title{
+  padding-top: 6px;
+  height: 30px;
+  font-size: 20px;
+}

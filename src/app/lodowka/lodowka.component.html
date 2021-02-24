@@ -1,9 +1,18 @@
-<div>
-  <mat-grid-list [cols]="breakpoint" style="height: 300px" class="grid" (window:resize)="onResize($event)">
-    <mat-grid-tile *ngFor="let product of products">
-      <app-product-card [product]="product"></app-product-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div class="container">
+  <mat-label class="header">
+    <h1 class="header-title">Lodówka</h1>
+  </mat-label>
+  <div class="grid-container">
+    <mat-grid-list *ngIf="products.length !== 0 ; else elseBlock" [cols]="breakpoint" style="height: 300px" class="grid"
+      (window:resize)="onResize($event)">
+      <mat-grid-tile *ngFor="let product of products">
+        <app-product-card [product]="product"></app-product-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <ng-template #elseBlock>
+      <p>Dodaj swój pierwszy produkt.</p>
+    </ng-template>
 
-  <app-add-product-button></app-add-product-button>
+    <app-add-product-button></app-add-product-button>
+  </div>
 </div>

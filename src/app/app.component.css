@@ -48,3 +48,29 @@ mat-drawer-content {
     margin-top: 56px;
   }
 }
+.profile-photo{
+  border-radius: 50%;
+  height: 35px;
+  position: fixed;
+  right: 8px;
+}
+.sidenav a:hover {
+  color: #3f51b5;
+}
+.sidenav{
+  font-family: "Lato", sans-serif;
+  margin-top: 65px;
+}
+.sidenav a{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}

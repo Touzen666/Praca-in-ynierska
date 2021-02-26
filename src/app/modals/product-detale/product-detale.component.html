@@ -14,25 +14,25 @@
     </section>
     <div mat-dialog-content>
       <mat-list role="list">
-        <mat-list-item role="listitem">
+        <mat-list-item role="listitem" *ngIf="data.product.name">
           <mat-label>Nazwa:</mat-label>{{data.product.name}}
         </mat-list-item>
-        <mat-list-item role="listitem">
+        <mat-list-item role="listitem" *ngIf="data.product.quantity">
           <mat-label>Ilość:</mat-label>{{data.product.quantity}}
         </mat-list-item>
-        <mat-list-item role="listitem">
+        <mat-list-item role="listitem" *ngIf="data.product.weight">
           <mat-label>Waga jednostki:</mat-label>{{data.product.weight }}{{data.product.units }}
         </mat-list-item>
-        <mat-list-item role="listitem">
-          <mat-label>Kalorie:</mat-label>{{data.product.energy}}<p *ngIf="data.product.energy">kcl</p>
+        <mat-list-item role="listitem" *ngIf="data.product.calories">
+          <mat-label>Kalorie:</mat-label>{{data.product.calories}}<p *ngIf="data.product.calories">kcl</p>
         </mat-list-item>
-        <mat-list-item role="listitem">
+        <mat-list-item role="listitem" *ngIf="data.product.carbohydrates">
           <mat-label>Węglowodany:</mat-label>{{data.product.carbohydrates}}
         </mat-list-item>
-        <mat-list-item role="listitem">
+        <mat-list-item role="listitem" *ngIf="data.product.fat">
           <mat-label>Tłuszcz:</mat-label>{{data.product.fat}}
         </mat-list-item>
-        <mat-list-item role="listitem">
+        <mat-list-item role="listitem" *ngIf="data.product.proteines">
           <mat-label>Białko:</mat-label>{{data.product.proteines}}
         </mat-list-item>
       </mat-list>

@@ -8,7 +8,7 @@
   <div mat-dialog-content class="content">
     <section class="img">
       <div class="modalImagePlaceholder"></div>
-      <mat-form-field class="">
+      <mat-form-field class="name">
         <mat-label>Nazwa</mat-label>
         <input matInput formControlName="name" placeholder="Jabłko" />
         <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
@@ -16,11 +16,12 @@
           <div *ngIf="name.errors.pattern">Dozwolone tylko litery</div>
         </mat-error>
       </mat-form-field>
+      <mat-form-field class="quantity">
+        <mat-label>Ilość:</mat-label>
+        <input matInput formControlName="quantity" type="number" placeholder="5" />
+      </mat-form-field>
     </section>
     <section class="caloricValue">
-      <label>Ilość: </label>
-      <mat-slider formControlName="quantity" style="width: 70%;"></mat-slider>{{addProductForm.value.quantity}}
-      <br>
       <mat-radio-group class="units" formControlName="units" aria-label="Select an option">
         <mat-radio-button color="primary" class="radio-b" value="kg"></mat-radio-button>
         <mat-label>KG</mat-label>
@@ -30,7 +31,7 @@
         <mat-label>L</mat-label>
         <mat-radio-button color="primary" class="radio-b" value="mil"></mat-radio-button>
         <mat-label>MIL</mat-label>
-        <mat-error *ngIf="units.invalid && (units.dirty || units.touched)">
+        <mat-error *ngIf="units.invalid &&  name.touched">
           <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
         </mat-error>
       </mat-radio-group>
@@ -43,8 +44,11 @@
       </mat-form-field>
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Kalorie</mat-label>
-        <input matInput formControlName="energy" type="number" placeholder="134kcl" />
+        <input matInput formControlName="calories" type="number" placeholder="134kcl" />
         <span matSuffix>kcl</span>
+        <mat-error *ngIf="calories.invalid && (calories.dirty || calories.touched)">
+          <div *ngIf="calories.errors.required">Kalorie są wymagana</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Węglowodany</mat-label>

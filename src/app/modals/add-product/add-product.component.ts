@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit {
     quantity: [''],
     units: ['', Validators.required],
     weight: ['', Validators.compose([Validators.required, Validators.pattern('[1-9]|10')])],
-    energy: ['', Validators.pattern('[1-9]|10')],
+    calories: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.required])],
     carbohydrates: ['', Validators.pattern('[1-9]|10')],
     proteines: ['', Validators.pattern('[1-9]|10')],
     fat: ['', Validators.pattern('[1-9]|10')],
@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
   get name() { return this.addProductForm.get('name') }
   get units() { return this.addProductForm.get('units') }
   get weight() { return this.addProductForm.get('weight') }
-
+  get calories() { return this.addProductForm.get('calories') }
   checkboxClicked() {
     this.hasNotClicked = false
   }

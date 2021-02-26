@@ -15,7 +15,7 @@ export interface Produkt {
   };
   weight: number;
 
-  energy?: number;
+  calories?: number;
   carbohydrates?: number;
   proteines?: number;
   fat?: number;

@@ -15,7 +15,7 @@
     </mat-label>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" style=" left: 0 ; right: 0;top: 0; width: 100%;  position: fixed; z-index: 100;">
+    <mat-toolbar *ngIf="user" color="primary" style=" left: 0 ; right: 0;top: 0; width: 100%;  position: fixed; z-index: 100;">
       <button mat-button (click)="drawer.toggle()">
         <img style="height: 30px;" src="../assets/menu.png" alt="menu">
       </button>

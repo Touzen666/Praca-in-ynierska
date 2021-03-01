@@ -29,8 +29,7 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   public range = this.tableService.range;
   public dataSource = new MatTableDataSource<Produkt>([]);
   public user: firebase.User | null;
-  public productsSum: columnSum;
-  displayedSumColumns: string[] = ['quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
+  displayedSumColumns: string[] = ['quantitySum', 'weightSum', 'caloriesSum', 'carbohydratesSum', 'proteinesSum', 'fatSum'];
   columnSum = {
     quantitySum: 0,
     weightSum: 0,
@@ -39,7 +38,7 @@ export class TabelaComponent implements OnInit, AfterViewInit {
     proteinesSum: 0,
     fatSum: 0
   }
-  sumSource: columnSum;
+  sumSource: MatTableDataSource<columnSum>;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatSort) sort: MatSort;
@@ -52,34 +51,29 @@ export class TabelaComponent implements OnInit, AfterViewInit {
     private auth: AngularFireAuth
   ) {
     // this.sortedData = this.products.slice();
-    this.products.subscribe(products => {
-      this.dataSource = new MatTableDataSource<Produkt>(products)
-    })
-
   }
+
   ngOnInit(): void {
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.tableService.refreshSubscription();
     });
     this.products.subscribe(products => {
-      const produktsList = products;
-      this.sumColumns(produktsList, this.columnSum);
+      this.dataSource = new MatTableDataSource<Produkt>(products)
+      this.sumColumns(products);
     })
   }
-  sumColumns(produktsList, columnSum) {
-    const productsList = produktsList
+
+  sumColumns(productsList) {
     productsList.forEach(p => {
-      columnSum.quantitySum = columnSum.quantitySum + p.quantity
-      columnSum.weightSum = columnSum.weightSum + p.weight
-      columnSum.caloriesSum = columnSum.caloriesSum + p.calories
-      columnSum.carbohydratesSum = columnSum.carbohydratesSum + p.carbohydrates
-      columnSum.proteinesSum = columnSum.proteinesSum + p.proteines
-      columnSum.fatSum = columnSum.fatSum + p.fat
+      this.columnSum.quantitySum += p.quantity
+      this.columnSum.weightSum += p.weight
+      this.columnSum.caloriesSum += p.calories
+      this.columnSum.carbohydratesSum += p.carbohydrates
+      this.columnSum.proteinesSum += p.proteines
+      this.columnSum.fatSum += p.fat
     })
-    this.sumSource = this.productsSum;
-    this.productsSum = columnSum;
-    return this.productsSum;
+    this.sumSource = new MatTableDataSource<columnSum>([this.columnSum]);
   }
   sortData(sort: Sort) {
     //   const data = this.products.slice();

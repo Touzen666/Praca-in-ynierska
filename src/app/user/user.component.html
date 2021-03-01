@@ -2,7 +2,9 @@
     <mat-label class="header">
         <h1 class="header-title">Profil</h1>
     </mat-label>
-    <ngx-auth-firebaseui [providers]="[providers.Google]" (onSuccess)="redirectToFridge()">
+    <ngx-auth-firebaseui *ngIf="!user" [providers]="[providers.Google]" (onSuccess)="redirectToFridge()">
     </ngx-auth-firebaseui>
+    <ngx-auth-firebaseui-user *ngIf="user" [providers]="[providers.Google]" (onSuccess)="redirectToFridge()">
+    </ngx-auth-firebaseui-user>
 
 </div>

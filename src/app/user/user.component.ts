@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthProvider, LinkMenuItem } from 'ngx-auth-firebaseui';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -9,7 +12,14 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   providers = AuthProvider;
   printLog: Function;
-  constructor(private router: Router) { }
+
+  public user: firebase.User
+
+  constructor(private router: Router, public auth: AngularFireAuth) {
+    this.auth.authState.subscribe((user) => {
+      this.user = user;
+    })
+  }
 
   links: LinkMenuItem[];
 

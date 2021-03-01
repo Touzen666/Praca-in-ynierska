@@ -8,10 +8,8 @@ import firebase from 'firebase';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { TableService } from '../services/table/table.service';
+import { ColumnFilters, TableService } from '../services/table/table.service';
 export interface columnSum {
-  quantitySum: number;
-  weightSum: number;
   caloriesSum: number;
   carbohydratesSum: number;
   proteinesSum: number;
@@ -23,17 +21,16 @@ export interface columnSum {
   styleUrls: ['./tabela.component.css']
 })
 export class TabelaComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['name', 'quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
+  displayedColumns: string[] = [];
   public sortedData;
   public products = this.tableService.products;
   public range = this.tableService.range;
   public dataSource = new MatTableDataSource<Produkt>([]);
   public user: firebase.User | null;
+  public filter: ColumnFilters
 
-  displayedSumColumns: string[] = ['quantitySum', 'weightSum', 'caloriesSum', 'carbohydratesSum', 'proteinesSum', 'fatSum'];
+  displayedSumColumns: string[] = ['caloriesSum', 'carbohydratesSum', 'proteinesSum', 'fatSum'];
   columnSum = {
-    quantitySum: 0,
-    weightSum: 0,
     caloriesSum: 0,
     carbohydratesSum: 0,
     proteinesSum: 0,
@@ -63,12 +60,28 @@ export class TabelaComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<Produkt>(products)
       this.sumColumns(products);
     })
+    this.tableService.columnFilters.subscribe(filter => {
+      console.log("update filter", filter)
+      this.filter = filter
+      this.updateColumns()
+    })
+  }
+
+  updateColumns() {
+    const order = ['name', 'quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
+    const columns = []
+
+    order.forEach(col => {
+      const filterVal = this.filter[col]
+      if (filterVal === undefined) columns.push(col)
+      if (filterVal === true) columns.push(col)
+    })
+
+    this.displayedColumns = columns
   }
 
   sumColumns(productsList) {
     productsList.forEach(p => {
-      this.columnSum.quantitySum += p.quantity
-      this.columnSum.weightSum += p.weight
       this.columnSum.caloriesSum += p.calories
       this.columnSum.carbohydratesSum += p.carbohydrates
       this.columnSum.proteinesSum += p.proteines

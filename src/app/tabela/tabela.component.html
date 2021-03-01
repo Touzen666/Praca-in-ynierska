@@ -2,8 +2,52 @@
     <mat-label class="header">
         <h1 class="header-title">Tabela kaloryczna</h1>
     </mat-label>
+    <table mat-table [dataSource]="sumSource" class="mat-elevation-z8">
+
+
+        <!-- <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> suma </th>
+        </ng-container> -->
+
+        <ng-container matColumnDef="quantitySum">
+            <th mat-header-cell *matHeaderCellDef> Ilość </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantitySum}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="weightSum">
+            <th mat-header-cell *matHeaderCellDef> Waga </th>
+            <td mat-cell *matCellDef="let element"> {{element.weightSum}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="caloriesSum">
+            <th mat-header-cell *matHeaderCellDef> calorie </th>
+            <td mat-cell *matCellDef="let element"> {{element.caloriesSum}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="carbohydrates">
+            <th mat-header-cell *matHeaderCellDef> Węglowdany </th>
+            <td mat-cell *matCellDef="let element"> {{element.carbohydrates}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="proteinesSum">
+            <th mat-header-cell *matHeaderCellDef> Baiałko </th>
+            <td mat-cell *matCellDef="let element"> {{element.proteinesSum}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fatSum">
+            <th mat-header-cell *matHeaderCellDef> Tłuszcz </th>
+            <td mat-cell *matCellDef="let element"> {{element.fatSum}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedSumColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedSumColumns;"></tr>
+    </table>
+
+
+
+
     <div class="mat-elevation-z8 table-container">
-        <table mat-table matSort [dataSource]="dataSource" (matSortChange)="sortData($event)">
+        <table mat-table matSort [dataSource]="dataSource">
 
             <!-- Position Column -->
             <!-- <ng-container matColumnDef="position">
@@ -12,39 +56,39 @@
                 </ng-container> -->
 
 
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="name"> Nazwa </th>
+            <ng-container matColumnDef="name" stickyHeader>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="quantity">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="quantity"> Ilość </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ilość </th>
                 <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
             </ng-container>
 
 
             <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="weight"> Waga </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Waga </th>
                 <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
                 <td mat-cell *matCellDef="let element"> {{element.units.g}} </td>
             </ng-container>
 
 
-            <ng-container matColumnDef="energy">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="energy"> Energia </th>
-                <td mat-cell *matCellDef="let element"> {{element.energy}} </td>
+            <ng-container matColumnDef="calories">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Kalorie </th>
+                <td mat-cell *matCellDef="let element"> {{element.calories}} </td>
             </ng-container>
 
             <ng-container matColumnDef="carbohydrates">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="carbohydrates"> Węglowodany </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Węglowodany </th>
                 <td mat-cell *matCellDef="let element"> {{element.carbohydrates}} </td>
             </ng-container>
             <ng-container matColumnDef="proteines">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="proteines"> Białko </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Białko </th>
                 <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
             </ng-container>
             <ng-container matColumnDef="fat">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header="fat"> Tłuszcz </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tłuszcz </th>
                 <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
             </ng-container>
 

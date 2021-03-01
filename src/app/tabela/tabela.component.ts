@@ -29,6 +29,7 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   public range = this.tableService.range;
   public dataSource = new MatTableDataSource<Produkt>([]);
   public user: firebase.User | null;
+
   displayedSumColumns: string[] = ['quantitySum', 'weightSum', 'caloriesSum', 'carbohydratesSum', 'proteinesSum', 'fatSum'];
   columnSum = {
     quantitySum: 0,

@@ -1,10 +1,8 @@
 <section class="checkbox-section">
     <mat-label class="title">Filtruj tabele po kolumnach:</mat-label>
     <div class="checkbox-position">
-        <mat-checkbox class="example-margin" color="primary">Ilość</mat-checkbox>
-        <mat-checkbox class="example-margin" color="primary">Waga</mat-checkbox>
-        <mat-checkbox class="example-margin" color="primary">Energia</mat-checkbox>
-        <mat-checkbox class="example-margin" color="primary">Białko</mat-checkbox>
-        <mat-checkbox class="example-margin" color="primary">Tłuszcze</mat-checkbox>
+        <mat-checkbox *ngFor="let cb of checkboxes" class="example-margin" color="primary" [(ngModel)]="filter[cb.column]" (ngModelChange)="updateFilter()">
+            {{cb.label}}
+        </mat-checkbox>
     </div>
 </section>

@@ -4,6 +4,16 @@ import { Produkt } from 'src/app/models/produkt';
 import { LodowkaService } from '../lodowka/lodowka.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { AngularFireAuth } from '@angular/fire/auth';
+
+export interface ColumnFilters {
+  quantity: boolean;
+  weight: boolean;
+  calories: boolean;
+  carbohydrates: boolean;
+  proteines: boolean;
+  fat: boolean;
+}
+
 interface DateRage {
   start: Date;
   end: Date;
@@ -14,8 +24,17 @@ interface DateRage {
 
 export class TableService {
   public subscription: Subscription;
-  public products = new BehaviorSubject<Produkt[]>([]);
+
   public range: BehaviorSubject<DateRage>;
+  public products = new BehaviorSubject<Produkt[]>([]);
+  public columnFilters = new BehaviorSubject<ColumnFilters>({
+    quantity: true,
+    weight: true,
+    calories: true,
+    carbohydrates: true,
+    proteines: true,
+    fat: true,
+  });
 
   constructor(
     private lodowkaService: LodowkaService,
@@ -30,6 +49,10 @@ export class TableService {
   setTime(timeGroup: DateRage) {
     console.log("setTime", timeGroup);
     this.range.next(timeGroup)
+  }
+
+  setFilters(filters: ColumnFilters) {
+    this.columnFilters.next(filters)
   }
 
   refreshSubscription() {

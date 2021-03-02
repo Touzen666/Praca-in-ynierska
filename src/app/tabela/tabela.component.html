@@ -1,89 +1,89 @@
-<div class="container">
-    <mat-label class="header">
-        <h1 class="header-title">Podsumowanie kaloryczne</h1>
-    </mat-label>
-    <table mat-table [dataSource]="sumSource" class="mat-elevation-z2">
-        <ng-container matColumnDef="caloriesSum">
-            <th mat-header-cell *matHeaderCellDef> calorie </th>
-            <td mat-cell *matCellDef="let element"> {{element.caloriesSum}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="carbohydratesSum">
-            <th mat-header-cell *matHeaderCellDef> Węglowdany </th>
-            <td mat-cell *matCellDef="let element"> {{element.carbohydratesSum}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="proteinesSum">
-            <th mat-header-cell *matHeaderCellDef> Baiałko </th>
-            <td mat-cell *matCellDef="let element"> {{element.proteinesSum}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fatSum">
-            <th mat-header-cell *matHeaderCellDef> Tłuszcz </th>
-            <td mat-cell *matCellDef="let element"> {{element.fatSum}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedSumColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedSumColumns;"></tr>
-    </table>
-
-
-
-
+<div class="container" *ngIf="productsList.length == 0 ">
     <mat-label class="header">
         <h1 class="header-title">Tabela kaloryczna</h1>
     </mat-label>
-    <div class="mat-elevation-z2 table-container">
-        <table mat-table matSort [dataSource]="dataSource">
-
-            <!-- Position Column -->
-            <!-- <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> Np. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container> -->
-
-
-            <ng-container matColumnDef="name" stickyHeader>
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="quantity">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ilość </th>
-                <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Waga </th>
-                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                <td mat-cell *matCellDef="let element"> {{element.units.g}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="calories">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Kalorie </th>
-                <td mat-cell *matCellDef="let element"> {{element.calories}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="carbohydrates">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Węglowodany </th>
-                <td mat-cell *matCellDef="let element"> {{element.carbohydrates}} </td>
-            </ng-container>
-            <ng-container matColumnDef="proteines">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Białko </th>
-                <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
-            </ng-container>
-            <ng-container matColumnDef="fat">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tłuszcz </th>
-                <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
-    </div>
-    <app-filters-button></app-filters-button>
+    <mat-label class="header">
+        <p class="add-u-f-p">W najbliższym miesiącu nic nie zjadłeś.<br>Kliknij przycisk poniżej i wprowadz inną datę
+        </p>
+    </mat-label>
 </div>
+<div class="container" *ngIf="productsList.length !== 0 ">
+    <div class="summary-calorical">
+        <mat-label class="header ">
+            <h1 class="header-title">Podsumowanie kaloryczne</h1>
+        </mat-label>
+        <table mat-table [dataSource]="sumSource" class="mat-elevation-z2">
+            <ng-container matColumnDef="caloriesSum">
+                <th mat-header-cell *matHeaderCellDef> calorie </th>
+                <td mat-cell *matCellDef="let element"> {{element.caloriesSum}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="carbohydratesSum">
+                <th mat-header-cell *matHeaderCellDef> Węglowdany </th>
+                <td mat-cell *matCellDef="let element"> {{element.carbohydratesSum}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="proteinesSum">
+                <th mat-header-cell *matHeaderCellDef> Baiałko </th>
+                <td mat-cell *matCellDef="let element"> {{element.proteinesSum}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fatSum">
+                <th mat-header-cell *matHeaderCellDef> Tłuszcz </th>
+                <td mat-cell *matCellDef="let element"> {{element.fatSum}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedSumColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedSumColumns;"></tr>
+        </table>
+    </div>
+
+    <div class="calories-table">
+        <mat-label class="header sticky-header">
+            <h1 class="header-title">Tabela kaloryczna</h1>
+        </mat-label>
+        <div class="mat-elevation-z2 table-container ">
+            <table mat-table matSort [dataSource]="dataSource">
+                <div matColumnDef="eatenDate" class="sticky-table">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Data zjedzeinia </th>
+                    <td mat-cell *matCellDef="let element"> {{element.eatenDate}} </td>
+                </div>
+
+                <div matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </div>
+                <div matColumnDef="quantity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ilość </th>
+                    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+                </div>
+                <div matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Waga </th>
+                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.units.g}} </td>
+                </div>
+                <div matColumnDef="calories">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kalorie </th>
+                    <td mat-cell *matCellDef="let element"> {{element.calories}} </td>
+                </div>
+                <div matColumnDef="carbohydrates">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Węglowodany </th>
+                    <td mat-cell *matCellDef="let element"> {{element.carbohydrates}} </td>
+                </div>
+                <div matColumnDef="proteines">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Białko </th>
+                    <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
+                </div>
+                <vr matColumnDef="fat">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tłuszcz </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
+                </vr>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+<app-filters-button></app-filters-button>

@@ -6,6 +6,7 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth
 import { TabelaComponent } from './tabela/tabela.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'lodowka', pathMatch: 'full' },
   {
     path: "user",
     component: UserComponent,

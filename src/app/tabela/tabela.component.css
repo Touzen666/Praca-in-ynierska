@@ -27,3 +27,42 @@ td{
       width: 515px;
     }
   }
+
+  
+.add-u-f-p{
+  text-align: center;
+  margin-top: 30vh;
+  width: 100%;
+  font-weight: 650;
+  }
+  .summary-calorical{
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: white;
+  }
+  .calories-table{
+    padding-top:143px ;
+    background-color: white;
+  }
+  .sticky-header{
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: white;
+  }
+  .table-container{
+    margin-top: 48px;
+  }
+  /* .sticky-table-head{
+        position: fixed;
+    left: 0;
+  } */
+
+  @media (min-height: 100vh) {
+    .sticky-table {
+      margin-top: 58px;
+      position: sticky;
+      top: 0;
+    }
+  }

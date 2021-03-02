@@ -40,6 +40,8 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatSort) sort: MatSort;
+  start: Date;
+  productsList: Produkt[];
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
@@ -52,13 +54,20 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.tableService.refreshSubscription();
     });
     this.products.subscribe(products => {
       this.dataSource = new MatTableDataSource<Produkt>(products)
+      this.productsList = products;
       this.sumColumns(products);
+    })
+    this.range.subscribe(range => {
+      console.log("to ten range", range);
+      this.start = range.start
     })
     this.tableService.columnFilters.subscribe(filter => {
       console.log("update filter", filter)
@@ -68,20 +77,30 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   }
 
   updateColumns() {
-    const order = ['name', 'quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
+    const order = ['eatenDate', 'name', 'quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
     const columns = []
 
     order.forEach(col => {
       const filterVal = this.filter[col]
       if (filterVal === undefined) columns.push(col)
       if (filterVal === true) columns.push(col)
+      // if (columns.length == 1) {
+      //   console.log("została jedna kolumna");
+      // }
     })
-
     this.displayedColumns = columns
   }
 
   sumColumns(productsList) {
     productsList.forEach(p => {
+      if (p.fat == "" || p.proteines == "" || p.carbohydrates == "" || p.calories == "") {
+        console.log("I am pusty znak");
+        p.fat = 0;
+        p.proteines = 0;
+        p.carbohydrates = 0;
+        p.calories = 0;
+      }
+
       this.columnSum.caloriesSum += p.calories
       this.columnSum.carbohydratesSum += p.carbohydrates
       this.columnSum.proteinesSum += p.proteines

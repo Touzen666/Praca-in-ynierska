@@ -15,12 +15,9 @@ export class LodowkaComponent implements OnInit {
     private lodowkaService: LodowkaService,
     private auth: AngularFireAuth
   ) { }
-
   public products: Produkt[] = [];
   public user: firebase.User | null;
   public breakpoint;
-  // TODO funcja dodajaca produkt do produkty[] TO
-  // handleDodanoProdukt()
   onResize(event) {
     if (event.target.innerWidth <= 400) {
       this.breakpoint = 2
@@ -39,15 +36,8 @@ export class LodowkaComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-
-
-    if (window.innerWidth <= 400) {
-      this.breakpoint = 2
-    } else {
-      this.breakpoint = 8
-    }
-    console.log(window.innerWidth);
-
+    this.breakpoint = (window.innerWidth <= 400) ? 2 : 6;
+    console.log("Szerokość ekranu", window.innerWidth);
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.lodowkaService

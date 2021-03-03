@@ -6,23 +6,9 @@
         </div>
     </h1>
     <div mat-dialog-content class="content">
-        <h3 class="hint">Proszę podać wagę lub ilość zjadanego produktu</h3>
-        <mat-form-field class="example-full-width">
-            <mat-label>Waga jednostki: </mat-label>
-            <input matInput formControlName="weight" type="number" placeholder="10" />
-            <span matSuffix>g</span>
-            <mat-error *ngIf="weight.invalid && (weight.dirty || weight.touched)">
-                <div *ngIf="weight.errors.required">Waga jest wymagana</div>
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Ilość: </mat-label>
-            <input matInput formControlName="quantity" type="number" placeholder="10" />
-            <span matSuffix>szt.</span>
-            <mat-error *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
-                <div *ngIf="quantity.errors.required">Waga jest wymagana</div>
-            </mat-error>
-        </mat-form-field>
+        <h3 class="hint">Zjadana ilość:</h3>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="100000"></mat-slider>
+
     </div>
     <button mat-raised-button color="primary" type="submit">
         Zjedz

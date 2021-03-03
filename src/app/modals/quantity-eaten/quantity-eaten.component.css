@@ -2,3 +2,6 @@
     margin-top: 6px;
     margin-bottom: 18px;
 }
+mat-slider {
+    width: 300px;
+  }

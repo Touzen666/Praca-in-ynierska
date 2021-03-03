@@ -45,7 +45,13 @@ export class QuantityEatenComponent implements OnInit {
       alert('Popraw formularz')
     }
   }
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
 
+    return value;
+  }
   closeModal(): void {
     this.dialogRef.close();
   }

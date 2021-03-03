@@ -52,7 +52,7 @@
                 </div>
                 <div matColumnDef="eatenDate" class="sticky-column-name">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Data zjedzeinia </th>
-                    <td mat-cell *matCellDef="let element"> {{element.eatenDate}} </td>
+                    <td mat-cell *matCellDef="let element"> {{ element.eatenDate | date:'short' }} </td>
                 </div>
                 <div matColumnDef="quantity">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Ilość </th>

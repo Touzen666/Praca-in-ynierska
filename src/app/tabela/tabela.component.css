@@ -40,6 +40,7 @@ td{
     left: 0;
     right: 0;
     background-color: white;
+    z-index: 100;
   }
   .calories-table{
     padding-top:141px ;
@@ -51,6 +52,7 @@ td{
     right: 0;
     height: 48px;
     background-color: white;
+    z-index: 100;
     border-bottom: 1px solid rgb(230, 230, 230);
   }
   .header-title-calories-table{
@@ -77,7 +79,13 @@ top:8px
     top: 246px;
     background-color: white;
   }
+  th.mat-header-cell:first-of-type{
+    z-index: 100;
+  }
   .sticky-column-name{
     position: sticky ;
     left: 0;
+
+
+    background-color: white;
   }

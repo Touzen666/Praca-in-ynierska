@@ -77,7 +77,7 @@ export class TabelaComponent implements OnInit, AfterViewInit {
   }
 
   updateColumns() {
-    const order = ['eatenDate', 'name', 'quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
+    const order = ['name', 'eatenDate', 'quantity', 'weight', 'calories', 'carbohydrates', 'proteines', 'fat'];
     const columns = []
 
     order.forEach(col => {

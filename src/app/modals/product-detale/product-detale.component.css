@@ -14,7 +14,8 @@
     z-index: 100;
   }
 .modal-eat{
-  margin: 5px;
+  margin-left: 3px;
+  margin-right: 1px;
 }
   @media (min-width: 400px) {
     .modalImagePlaceholder {

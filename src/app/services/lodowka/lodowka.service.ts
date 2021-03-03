@@ -20,11 +20,12 @@ export class LodowkaService {
       eatenDateTo?: Date
     }
   ): Observable<Produkt[]> {
+    const collection = eaten ? "produkty_zjedzone" : "produkty";
+
     return this.firestore
       .collection('users')
       .doc(user)
-      .collection('produkty', ref => ref
-        .where("eaten", "==", eaten)
+      .collection(collection, ref => ref
         .where("eatenDate", ">", options?.eatenDateFrom?.getTime() || minDate)
         .where("eatenDate", "<", options?.eatenDateTo?.getTime() || maxDate)
       )
@@ -46,22 +47,45 @@ export class LodowkaService {
       .doc()
       .set({
         ...produkt,
-        eaten: false,
         eatenDate: 1
       });
   }
 
-  zjedzProdukt(user: string, idProduktu: string): Promise<void> {
-    return this.firestore
+  async zjedzProdukt(user: string, idProduktu: string, wagaDoZjedznia: number): Promise<void> {
+    const doc = this.firestore
       .collection('users')
       .doc(user)
       .collection('produkty')
-      .doc(idProduktu)
-      .update({
-        eaten: true,
+      .doc(idProduktu);
+
+    const produkt = await doc.get().toPromise();
+
+    const obecnyProdukt = produkt.data() as Produkt;
+    const obecnaWaga = obecnyProdukt.weight;
+    const docelowaWaga = obecnaWaga - wagaDoZjedznia
+
+    if (docelowaWaga < 0) {
+      throw new Error("Za duzo jesz za malo masz")
+    } else if (docelowaWaga === 0) {
+      await doc.delete()
+    } else {
+      await doc.update({
+        weight: obecnaWaga - wagaDoZjedznia,
+      });
+    }
+
+    return this.firestore
+      .collection('users')
+      .doc(user)
+      .collection('produkty_zjedzone')
+      .doc()
+      .set({
+        ...obecnyProdukt,
+        weight: wagaDoZjedznia,
         eatenDate: Date.now()
       });
   }
+
   wyjmijProdukt(user: string, idProduktu: string): Promise<void> {
     return this.firestore
       .collection('users')

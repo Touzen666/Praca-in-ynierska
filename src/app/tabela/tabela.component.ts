@@ -93,18 +93,10 @@ export class TabelaComponent implements OnInit, AfterViewInit {
 
   sumColumns(productsList) {
     productsList.forEach(p => {
-      if (p.fat == "" || p.proteines == "" || p.carbohydrates == "" || p.calories == "") {
-        console.log("I am pusty znak");
-        p.fat = 0;
-        p.proteines = 0;
-        p.carbohydrates = 0;
-        p.calories = 0;
-      }
-
-      this.columnSum.caloriesSum += p.calories
-      this.columnSum.carbohydratesSum += p.carbohydrates
-      this.columnSum.proteinesSum += p.proteines
-      this.columnSum.fatSum += p.fat
+      this.columnSum.caloriesSum += p.calories || 0
+      this.columnSum.carbohydratesSum += p.carbohydrates || 0
+      this.columnSum.proteinesSum += p.proteines || 0
+      this.columnSum.fatSum += p.fat || 0
     })
     this.sumSource = new MatTableDataSource<columnSum>([this.columnSum]);
   }

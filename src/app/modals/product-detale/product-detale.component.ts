@@ -30,7 +30,7 @@ export class ProductDetaleComponent implements OnInit {
 
   eatProduct() {
     this.auth.authState.subscribe((user) => {
-      this.lodowka.zjedzProdukt(user.uid, this.data.product.id);
+      this.lodowka.zjedzProdukt(user.uid, this.data.product.id, 100);
       this.dialogRef.close();
     });
   }

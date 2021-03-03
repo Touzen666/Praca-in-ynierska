@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSortModule } from '@angular/material/sort';
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
@@ -31,7 +32,8 @@ const MaterialComponents = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatTableModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatSortModule
 ];
 
 @NgModule({

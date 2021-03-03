@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Produkt } from '../models/produkt';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -37,40 +37,37 @@ export class TabelaComponent implements OnInit, AfterViewInit {
     fatSum: 0
   }
   sumSource: MatTableDataSource<columnSum>;
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   start: Date;
   productsList: Produkt[];
+
+
+  constructor(
+    private tableService: TableService,
+    private auth: AngularFireAuth,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
-  constructor(
-    private tableService: TableService,
-    private auth: AngularFireAuth
-  ) {
-    // this.sortedData = this.products.slice();
-  }
 
   ngOnInit(): void {
-
-
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.tableService.refreshSubscription();
     });
     this.products.subscribe(products => {
-      this.dataSource = new MatTableDataSource<Produkt>(products)
       this.productsList = products;
+      this.changeDetectorRef.detectChanges()
+      this.dataSource = new MatTableDataSource<Produkt>(products)
+      this.dataSource.sort = this.sort;
       this.sumColumns(products);
     })
     this.range.subscribe(range => {
-      console.log("to ten range", range);
       this.start = range.start
     })
     this.tableService.columnFilters.subscribe(filter => {
-      console.log("update filter", filter)
       this.filter = filter
       this.updateColumns()
     })
@@ -84,9 +81,6 @@ export class TabelaComponent implements OnInit, AfterViewInit {
       const filterVal = this.filter[col]
       if (filterVal === undefined) columns.push(col)
       if (filterVal === true) columns.push(col)
-      // if (columns.length == 1) {
-      //   console.log("została jedna kolumna");
-      // }
     })
     this.displayedColumns = columns
   }
@@ -100,31 +94,4 @@ export class TabelaComponent implements OnInit, AfterViewInit {
     })
     this.sumSource = new MatTableDataSource<columnSum>([this.columnSum]);
   }
-  sortData(sort: Sort) {
-    //   const data = this.products.slice();
-    //   if (!sort.active || sort.direction === '') {
-    //     this.sortedData = data;
-    //     return;
-    //   }
-
-    //     this.sortedData = data.sort((a, b) => {
-    //       const isAsc = sort.direction === 'asc';
-    //       switch (sort.active) {
-    //         case 'name': return compare(a.name, b.name, isAsc);
-    //         case 'quantity': return compare(a.quantity, b.quantity, isAsc);
-    //         case 'weight': return compare(a.weight, b.weight, isAsc);
-    //         case 'energy': return compare(a.energy, b.energy, isAsc);
-    //         case 'carbohydrates': return compare(a.carbohydrates, b.carbohydrates, isAsc);
-    //         case 'proteines': return compare(a.proteines, b.proteines, isAsc);
-    //         case 'fat': return compare(a.fat, b.fat, isAsc);
-    //         default: return 0;
-    //       }
-    //     });
-    //   }
-  }
-  // function compare(a: number | string, b: number | string, isAsc: boolean) {
-  //   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  // }
-
 }
-

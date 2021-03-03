@@ -28,12 +28,7 @@ export class ProductDetaleComponent implements OnInit {
   public openModal = this.modalCreator;
   ngOnInit() { }
 
-  eatProduct() {
-    this.auth.authState.subscribe((user) => {
-      this.lodowka.zjedzProdukt(user.uid, this.data.product.id, 100);
-      this.dialogRef.close();
-    });
-  }
+
   takeOfProduct() {
     this.auth.authState.subscribe((user) => {
       this.lodowka.wyjmijProdukt(user.uid, this.data.product.id);

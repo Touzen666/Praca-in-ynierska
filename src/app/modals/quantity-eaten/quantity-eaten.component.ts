@@ -20,6 +20,7 @@ export class QuantityEatenComponent implements OnInit {
   constructor(
     public lodowka: LodowkaService,
     public fb: FormBuilder,
+    private auth: AngularFireAuth,
     public dialogRef: MatDialogRef<ProductDetaleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { product: Produkt }
   ) { }
@@ -28,20 +29,24 @@ export class QuantityEatenComponent implements OnInit {
   }
 
   eatProductForm = this.fb.group({
-    quantity: ['', Validators.pattern('[1-9]|10')],
-    weight: ['', Validators.pattern('[1-9]|10')],
+    quantity: ['', Validators.required],
   })
-
-  get weight() { return this.eatProductForm.get('weight') }
   get quantity() { return this.eatProductForm.get('quantity') }
 
+  eatProduct() {
+    this.auth.authState.subscribe((user) => {
+      this.lodowka.zjedzProdukt(user.uid, this.data.product.id, this.eatProductForm.value.quantity);
+      this.dialogRef.close();
+    });
+  }
   submited() {
     // console.log(this.addProductForm.valid);
     this.product = this.eatProductForm.value
 
     if (this.eatProductForm.valid && this.eatProductForm.dirty) {
-      console.log(this.eatProductForm.value);
+      console.log(this.eatProductForm.value.quantity);
       this.dialogRef.close(this.product);
+      this.eatProduct();
     } else {
       alert('Popraw formularz')
     }

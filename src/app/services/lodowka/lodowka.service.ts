@@ -65,7 +65,7 @@ export class LodowkaService {
     const docelowaWaga = obecnaWaga - wagaDoZjedznia
 
     if (docelowaWaga < 0) {
-      throw new Error("Za duzo jesz za malo masz")
+      throw new Error("Chcesz zjeść wiecej niż masz w lodówce")
     } else if (docelowaWaga === 0) {
       await doc.delete()
     } else {

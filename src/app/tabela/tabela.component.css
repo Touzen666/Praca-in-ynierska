@@ -42,14 +42,20 @@ td{
     background-color: white;
   }
   .calories-table{
-    padding-top:143px ;
+    padding-top:141px ;
     background-color: white;
   }
   .sticky-header{
     position: fixed;
     left: 0;
     right: 0;
+    height: 48px;
     background-color: white;
+    border-bottom: 1px solid rgb(230, 230, 230);
+  }
+  .header-title-calories-table{
+position: relative;
+top:8px
   }
   .table-container{
     margin-top: 48px;
@@ -59,10 +65,19 @@ td{
     left: 0;
   } */
 
-  @media (min-height: 100vh) {
+  /* @media (min-height: 100vh) {
     .sticky-table {
       margin-top: 58px;
       position: sticky;
       top: 0;
     }
+  } */
+.header-table{
+    position: sticky ;
+    top: 246px;
+    background-color: white;
+  }
+  .sticky-column-name{
+    position: sticky ;
+    left: 0;
   }

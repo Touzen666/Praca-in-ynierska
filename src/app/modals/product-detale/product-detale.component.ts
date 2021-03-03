@@ -17,14 +17,15 @@ import { AddProductComponent } from '../add-product/add-product.component';
 export class ProductDetaleComponent implements OnInit {
   public title = 'Produkt';
   constructor(
-    // public modalCreator: ModalCreatorService,
     public lodowka: LodowkaService,
-    // public prductModal: AddProductComponent,
     private auth: AngularFireAuth,
+    public modalCreator: ModalCreatorService,
     public dialogRef: MatDialogRef<ProductDetaleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { product: Produkt }
   ) { }
+  @Input() product: Produkt;
 
+  public openModal = this.modalCreator;
   ngOnInit() { }
 
   eatProduct() {
@@ -33,8 +34,23 @@ export class ProductDetaleComponent implements OnInit {
       this.dialogRef.close();
     });
   }
-
-  onNoClick(): void {
+  takeOfProduct() {
+    this.auth.authState.subscribe((user) => {
+      this.lodowka.wyjmijProdukt(user.uid, this.data.product.id);
+      this.dialogRef.close();
+    });
+  }
+  // onClick(): void {
+  //   this.modalCreator.openDialogEatenProduct().subscribe((produkt) => {
+  //     console.log("dostalem produkt", produkt)
+  //     if (produkt) {
+  //       this.auth.authState.subscribe((user) => {
+  //         this.lodowka.dodajDoLodowki(user.uid, produkt);
+  //       });
+  //     }
+  //   });
+  // }
+  closeModal(): void {
     this.dialogRef.close();
   }
 }

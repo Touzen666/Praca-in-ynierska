@@ -8,6 +8,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Produkt } from '../../models/produkt';
+import { QuantityEatenComponent } from 'src/app/modals/quantity-eaten/quantity-eaten.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -37,5 +38,18 @@ export class ModalCreatorService {
 
     return dialogRef.afterClosed();
   }
+  openDialogEatenProduct(product: Produkt): Observable<Produkt> {
+    const dialogRef = this.dialog.open(QuantityEatenComponent, {
+      panelClass: ['full-screen-dialog'],
+      width: '100%',
+      height: '300px',
+      maxWidth: '100%',
+      data: { product: product },
+
+    });
+
+    return dialogRef.afterClosed();
+  }
+
   ngOnInit(): void { }
 }

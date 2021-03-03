@@ -23,6 +23,7 @@ import { TabelaComponent } from './tabela/tabela.component';
 import { FiltersOptionsComponent } from './tabela/filters-options/filters-options.component';
 import { ColumnsFiltersComponent } from './tabela/columns-filters/columns-filters.component';
 import { FiltersButtonComponent } from './tabela/filters-button/filters-button.component';
+import { QuantityEatenComponent } from './modals/quantity-eaten/quantity-eaten.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { FiltersButtonComponent } from './tabela/filters-button/filters-button.c
     FiltersOptionsComponent,
     ColumnsFiltersComponent,
     FiltersButtonComponent,
+    QuantityEatenComponent,
   ],
   imports: [
     BrowserModule,

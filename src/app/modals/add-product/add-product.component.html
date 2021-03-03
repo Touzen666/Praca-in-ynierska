@@ -19,6 +19,9 @@
       <mat-form-field class="quantity">
         <mat-label>Ilość:</mat-label>
         <input matInput formControlName="quantity" type="number" placeholder="5" />
+        <mat-error *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+          <div *ngIf="quantity.errors.pattern">Dozwolone tylko cyfry</div>
+        </mat-error>
       </mat-form-field>
     </section>
     <section class="caloricValue">

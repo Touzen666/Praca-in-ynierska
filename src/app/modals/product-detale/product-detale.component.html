@@ -3,7 +3,7 @@
   <h1 mat-dialog-title class="modalTitle">
     {{ title }}
     <div class="rightCross">
-      <img class="cancelCross" (click)="onNoClick()" src="../../../assets/cancel.png" alt="" />
+      <img class="cancelCross" (click)="closeModal()" src="../../../assets/cancel.png" alt="" />
     </div>
   </h1>
 
@@ -40,6 +40,15 @@
   </div>
 
   <div mat-dialog-actions class="eat-bottom-right">
-    <button mat-raised-button color="primary" (click)="eatProduct()">Zjedz</button>
+    <div class="modal-eat">
+      <button mat-stroked-button color="primary" (click)="takeOfProduct()">Wyjmij z lodówki</button>
+    </div>
+    <div class="modal-eat">
+      <button mat-stroked-button color="primary" (click)="openModal.openDialogEatenProduct(product)">Zjedz
+        Trochę</button>
+    </div>
+    <div class="modal-eat">
+      <button mat-raised-button color="primary" (click)="eatProduct()">Zjedz</button>
+    </div>
   </div>
 </div>

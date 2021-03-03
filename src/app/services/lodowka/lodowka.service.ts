@@ -62,4 +62,12 @@ export class LodowkaService {
         eatenDate: Date.now()
       });
   }
+  wyjmijProdukt(user: string, idProduktu: string): Promise<void> {
+    return this.firestore
+      .collection('users')
+      .doc(user)
+      .collection('produkty')
+      .doc(idProduktu)
+      .delete()
+  }
 }

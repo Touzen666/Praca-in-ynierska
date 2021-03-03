@@ -28,7 +28,7 @@ export class AddProductComponent implements OnInit {
 
   addProductForm = this.fb.group({
     name: ['', Validators.compose([Validators.required, Validators.pattern('[A-ĄąĆćĘęŁłŃńÓóŚśŹźŻż]*')])],
-    quantity: [''],
+    quantity: ['', Validators.pattern('[1-9]|10')],
     units: ['', Validators.required],
     weight: ['', Validators.compose([Validators.required, Validators.pattern('[1-9]|10')])],
     calories: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.required])],
@@ -41,6 +41,7 @@ export class AddProductComponent implements OnInit {
   get units() { return this.addProductForm.get('units') }
   get weight() { return this.addProductForm.get('weight') }
   get calories() { return this.addProductForm.get('calories') }
+  get quantity() { return this.addProductForm.get('quantity') }
   checkboxClicked() {
     this.hasNotClicked = false
   }

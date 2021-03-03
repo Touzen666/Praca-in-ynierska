@@ -21,7 +21,8 @@ export class QuantityEatenComponent implements OnInit {
     public lodowka: LodowkaService,
     public fb: FormBuilder,
     public dialogRef: MatDialogRef<ProductDetaleComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { product: Produkt }) { }
+    @Inject(MAT_DIALOG_DATA) public data: { product: Produkt }
+  ) { }
 
   ngOnInit(): void {
   }
@@ -45,13 +46,14 @@ export class QuantityEatenComponent implements OnInit {
       alert('Popraw formularz')
     }
   }
-  formatLabel(value: number) {
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
 
-    return value;
+  formatLabel(unit: string) {
+    return (value: number) => {
+      if (unit) return value + "" + unit
+      return value;
+    }
   }
+
   closeModal(): void {
     this.dialogRef.close();
   }

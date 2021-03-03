@@ -33,7 +33,6 @@ export class ModalCreatorService {
       height: '100%',
       maxWidth: '100%',
       data: { product: product },
-
     });
 
     return dialogRef.afterClosed();
@@ -45,7 +44,6 @@ export class ModalCreatorService {
       height: '300px',
       maxWidth: '100%',
       data: { product: product },
-
     });
 
     return dialogRef.afterClosed();

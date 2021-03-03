@@ -22,15 +22,35 @@ export class LodowkaComponent implements OnInit {
   // TODO funcja dodajaca produkt do produkty[] TO
   // handleDodanoProdukt()
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 2 : 6;
+    if (event.target.innerWidth <= 400) {
+      this.breakpoint = 2
+    }
+    else if (event.target.innerWidth <= 600) {
+      this.breakpoint = 3
+    }
+    else if (event.target.innerWidth <= 800) {
+      this.breakpoint = 4
+    }
+    else if (event.target.innerWidth <= 1100) {
+      this.breakpoint = 5
+    }
+    else if (event.target.innerWidth >= 1101) {
+      this.breakpoint = 8
+    }
   }
   ngOnInit(): void {
-    this.breakpoint = (window.innerWidth <= 400) ? 2 : 6;
+
+
+    if (window.innerWidth <= 400) {
+      this.breakpoint = 2
+    } else {
+      this.breakpoint = 8
+    }
     console.log(window.innerWidth);
 
     this.auth.authState.subscribe((user) => {
       this.user = user;
-        this.lodowkaService
+      this.lodowkaService
         .pobierzProduktyWLodowce(this.user.uid, false)
         .subscribe((produkty) => {
           this.products = produkty;

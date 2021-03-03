@@ -47,7 +47,7 @@ export class QuantityEatenComponent implements OnInit {
     }
   }
 
-  formatLabel(unit: string) {
+  formatLabel(unit) {
     return (value: number) => {
       if (unit) return value + "" + unit
       return value;

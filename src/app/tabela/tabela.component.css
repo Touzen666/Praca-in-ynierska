@@ -62,6 +62,12 @@ top:8px
   .table-container{
     margin-top: 48px;
   }
+  .summary-calorical{
+    text-align: center;
+  }
+  .calories-table{
+    text-align: center;
+  }
 .header-table{
     position: sticky ;
     top: 246px;

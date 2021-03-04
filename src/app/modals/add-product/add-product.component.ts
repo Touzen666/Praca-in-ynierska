@@ -18,6 +18,7 @@ export class AddProductComponent implements OnInit {
 
   public product: Produkt;
   public hasNotClicked: boolean;
+  submitedForm: boolean = false;
 
 
   constructor(
@@ -50,17 +51,22 @@ export class AddProductComponent implements OnInit {
   }
 
   submited() {
-    console.log(this.addProductForm.valid);
+    // console.log(this.addProductForm.valid);
     this.product = this.addProductForm.value
+    console.log(this.submitedForm);
 
+    this.markInvalid()
     if (this.addProductForm.valid && this.addProductForm.dirty) {
-      console.log(this.addProductForm.value);
+      // console.log(this.addProductForm.value);
       this.dialogRef.close(this.product);
+
     } else {
       alert('Popraw formularz')
     }
   }
-
+  markInvalid() {
+    this.submitedForm = true;
+  }
   ngOnInit() {
 
   }

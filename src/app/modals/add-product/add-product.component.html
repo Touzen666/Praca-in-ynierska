@@ -8,21 +8,26 @@
   <div mat-dialog-content class="content">
     <section class="img">
       <div class="modalImagePlaceholder"></div>
-      <mat-form-field class="name">
+      <mat-form-field class="example-full-width">
         <mat-label>Nazwa</mat-label>
         <input matInput formControlName="name" placeholder="Jabłko" />
         <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
-          <div *ngIf="name.errors.required">Nazwa jest wymagana</div>
+          <div *ngIf="name.errors.required && !submitedForm">Nazwa jest wymagana</div>
           <div *ngIf="name.errors.pattern">Dozwolone tylko litery</div>
         </mat-error>
-      </mat-form-field>
-      <mat-form-field class="quantity">
-        <mat-label>Ilość:</mat-label>
-        <input matInput formControlName="quantity" type="number" placeholder="5" />
-        <mat-error *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
-          <div *ngIf="quantity.errors.pattern">Dozwolone tylko cyfry</div>
-          <div *ngIf="quantity.errors.required">Ilość jest wymagana</div>
+        <mat-error *ngIf="submitedForm">
+          <div *ngIf="name.invalid">Nazwa jest wymagana</div>
         </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Ilość:</mat-label>
+        <input matInput formControlName="quantity" min="0" type="number" placeholder="5" />
+        <mat-error *ngIf="quantity.invalid  && (quantity.dirty || quantity.touched) ">
+          <div *ngIf="quantity.errors.pattern">Dozwolone tylko cyfry</div>
+          <div *ngIf="quantity.errors.required ">Ilość jest wymagana</div>
+          <div *ngIf="quantity.invalid || submitedForm">Ilość jest wymagane</div>
+        </mat-error>
+
       </mat-form-field>
     </section>
     <section class="caloricValue">
@@ -36,53 +41,71 @@
         <mat-radio-button color="primary" class="radio-b" value="mil"></mat-radio-button>
         <mat-label>MIL</mat-label>
         <mat-error *ngIf="units.invalid && (weight.dirty || weight.touched)">
-          <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
+          <div *ngIf="units.errors.required || !submitedForm">Jednostka wagi jest wymagana</div>
+        </mat-error>
+        <mat-error *ngIf="submitedForm">
+          <div *ngIf="units.invalid">Jednostka wagi jest wymagana</div>
         </mat-error>
       </mat-radio-group>
       <mat-form-field class="example-full-width">
         <mat-label>Waga jednostki: </mat-label>
-        <input matInput formControlName="weight" type="number" placeholder="10" />
+        <input matInput formControlName="weight" min="0" type="number" placeholder="10" />
         <mat-error *ngIf="weight.invalid && (weight.dirty || weight.touched)">
           <div *ngIf="weight.errors.required">Waga jest wymagana</div>
+        </mat-error>
+        <mat-error>
+          <div hidden="true" *ngIf="weight.invalid">Waga jest wymagana</div>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Kalorie</mat-label>
-        <input matInput formControlName="calories" type="number" placeholder="134kcl" />
+        <input matInput formControlName="calories" min="0" type="number" placeholder="134kcl" />
         <span matSuffix>kcl/100g</span>
         <mat-error *ngIf="calories.invalid && (calories.dirty || calories.touched)">
           <div *ngIf="calories.errors.required">Kalorie są wymagana</div>
         </mat-error>
+        <mat-error>
+          <div *ngIf="calories.invalid">Kalorie są wymagana</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Węglowodany</mat-label>
-        <input matInput formControlName="carbohydrates" type="number" placeholder="125" />
+        <input matInput formControlName="carbohydrates" min="0" type="number" placeholder="125" />
         <span matSuffix>ww/100g</span>
         <mat-error *ngIf="carbohydrates.invalid && (carbohydrates.dirty || carbohydrates.touched)">
           <div *ngIf="carbohydrates.errors.required">Węglowodany są wymagana</div>
         </mat-error>
+        <mat-error>
+          <div *ngIf="carbohydrates.invalid">Węglowodany są wymagana</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Białko</mat-label>
-        <input matInput formControlName="proteines" type="number" placeholder="30g" />
+        <input matInput formControlName="proteines" min="0" type="number" placeholder="30g" />
         <span matSuffix>/100g</span>
         <mat-error *ngIf="proteines.invalid && (proteines.dirty || proteines.touched)">
           <div *ngIf="proteines.errors.required">Białko jest wymagane</div>
         </mat-error>
+        <mat-error>
+          <div *ngIf="proteines.invalid">Białko jest wymagane</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Tłuszcze</mat-label>
-        <input matInput formControlName="fat" type="number" placeholder="12g" />
+        <input matInput formControlName="fat" min="0" type="number" placeholder="12g" />
         <span matSuffix>/100g</span>
         <mat-error *ngIf="fat.invalid && (fat.dirty || fat.touched)">
-          <div *ngIf="fat.errors.required">Tłuszcze są wymagana</div>
+          <div *ngIf="fat.errors.required ">Tłuszcze są wymagane</div>
+        </mat-error>
+        <mat-error>
+          <div *ngIf="fat.invalid">Tłuszcze są wymagane</div>
         </mat-error>
       </mat-form-field>
     </section>
   </div>
   <div mat-dialog-actions style="justify-content: center">
     <button mat-raised-button [mat-dialog-close]="product">Wczytaj dane z wagi</button>
-    <button mat-raised-button color="primary" type="submit">
+    <button mat-raised-button color="primary" type="submit" (click)="markInvalid()">
       Dodaj
     </button>
   </div>

@@ -12,7 +12,9 @@
   padding-left: 10vw;
   padding-right: 10vw;
 }
-
+.example-full-width{
+  width: 190px;
+}
 .m-checkbox {
   padding-left: 15px;
 }
@@ -31,10 +33,10 @@
     margin-right: 40px;
   }
 }
-@media (min-width: 1350px) {
+@media (min-width: 1320px) {
   .content{
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 30.5%;
+    padding-right: 30.5%;
   }
   .img{
     padding-left: 33%;
@@ -44,8 +46,8 @@
 }
 @media (min-width: 1680px) {
   .content{
-    padding-left: 31%;
-    padding-right: 31%;
+    padding-left: 31.2%;
+    padding-right: 31.2%;
   }
 
 }

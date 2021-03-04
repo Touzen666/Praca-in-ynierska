@@ -6,11 +6,9 @@ export interface Produkt {
   img?: string;
   name: string;
 
-  quantity?: number;
+  // quantity?: number;
   units: {
-    kg: boolean;
     g: boolean;
-    l: boolean;
     mil: boolean;
   };
   weight: number;

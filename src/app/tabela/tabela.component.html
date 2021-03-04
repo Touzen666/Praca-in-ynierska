@@ -55,12 +55,12 @@
                     <td mat-cell *matCellDef="let element" class="eatenDate"> {{ element.eatenDate | date:'short' }}
                     </td>
                 </div>
-                <div matColumnDef="quantity">
+                <!-- <div matColumnDef="quantity">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Ilość </th>
                     <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-                </div>
+                </div> -->
                 <div matColumnDef="weight">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Waga </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Ilość </th>
                     <td mat-cell *matCellDef="let element"> {{element.weight}}{{ element.units }}</td>
                 </div>
                 <div matColumnDef="calories">

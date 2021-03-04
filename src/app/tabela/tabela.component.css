@@ -5,7 +5,14 @@ table {
     color: black;
 
   }
-  
+  @media (min-width: 414px) {
+    table{
+      text-align: center !important;
+    }
+    td{
+      text-align: center !important;
+    }
+  }
    th{
     text-align: center !important;
     height: 30px !important;
@@ -18,17 +25,9 @@ table {
     padding-top: 20px;
 }
 
-td{
+/* ::ng-deep.mat-header-cell {
   text-align: center !important;
-}
- 
-  @media (max-width: 414px) {
-    .table-container{
-      width: 515px;
-    }
-  }
-
-  
+} */
 .add-u-f-p{
   text-align: center;
   margin-top: 30vh;
@@ -46,6 +45,7 @@ td{
     padding-top:141px ;
     background-color: white;
   }
+
   .sticky-header{
     position: fixed;
     left: 0;
@@ -62,18 +62,6 @@ top:8px
   .table-container{
     margin-top: 48px;
   }
-  /* .sticky-table-head{
-        position: fixed;
-    left: 0;
-  } */
-
-  /* @media (min-height: 100vh) {
-    .sticky-table {
-      margin-top: 58px;
-      position: sticky;
-      top: 0;
-    }
-  } */
 .header-table{
     position: sticky ;
     top: 246px;
@@ -85,7 +73,5 @@ top:8px
   .sticky-column-name{
     position: sticky ;
     left: 0;
-
-
     background-color: white;
   }

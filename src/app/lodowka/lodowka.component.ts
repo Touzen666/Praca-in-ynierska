@@ -36,7 +36,7 @@ export class LodowkaComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.breakpoint = (window.innerWidth <= 400) ? 2 : 6;
+    this.breakpoint = (window.innerWidth <= 400) ? 2 : 8;
     console.log("Szerokość ekranu", window.innerWidth);
     this.auth.authState.subscribe((user) => {
       this.user = user;

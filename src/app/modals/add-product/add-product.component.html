@@ -21,6 +21,7 @@
         <input matInput formControlName="quantity" type="number" placeholder="5" />
         <mat-error *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
           <div *ngIf="quantity.errors.pattern">Dozwolone tylko cyfry</div>
+          <div *ngIf="quantity.errors.required">Ilość jest wymagana</div>
         </mat-error>
       </mat-form-field>
     </section>
@@ -34,7 +35,7 @@
         <mat-label>L</mat-label>
         <mat-radio-button color="primary" class="radio-b" value="mil"></mat-radio-button>
         <mat-label>MIL</mat-label>
-        <mat-error *ngIf="units.invalid &&  name.touched">
+        <mat-error *ngIf="units.invalid && (weight.dirty || weight.touched)">
           <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
         </mat-error>
       </mat-radio-group>
@@ -48,7 +49,7 @@
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Kalorie</mat-label>
         <input matInput formControlName="calories" type="number" placeholder="134kcl" />
-        <span matSuffix>kcl</span>
+        <span matSuffix>kcl/100g</span>
         <mat-error *ngIf="calories.invalid && (calories.dirty || calories.touched)">
           <div *ngIf="calories.errors.required">Kalorie są wymagana</div>
         </mat-error>
@@ -56,17 +57,26 @@
       <mat-form-field class="example-full-width" style="width: 190px;">
         <mat-label>Węglowodany</mat-label>
         <input matInput formControlName="carbohydrates" type="number" placeholder="125" />
-        <span matSuffix>ww</span>
+        <span matSuffix>ww/100g</span>
+        <mat-error *ngIf="carbohydrates.invalid && (carbohydrates.dirty || carbohydrates.touched)">
+          <div *ngIf="carbohydrates.errors.required">Węglowodany są wymagana</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Białko</mat-label>
         <input matInput formControlName="proteines" type="number" placeholder="30g" />
-        <span matSuffix>g</span>
+        <span matSuffix>/100g</span>
+        <mat-error *ngIf="proteines.invalid && (proteines.dirty || proteines.touched)">
+          <div *ngIf="proteines.errors.required">Białko jest wymagane</div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Tłuszcze</mat-label>
         <input matInput formControlName="fat" type="number" placeholder="12g" />
-        <span matSuffix>g</span>
+        <span matSuffix>/100g</span>
+        <mat-error *ngIf="fat.invalid && (fat.dirty || fat.touched)">
+          <div *ngIf="fat.errors.required">Tłuszcze są wymagana</div>
+        </mat-error>
       </mat-form-field>
     </section>
   </div>

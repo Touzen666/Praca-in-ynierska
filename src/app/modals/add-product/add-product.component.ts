@@ -63,6 +63,10 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
 
   }
+  isFieldValid(fieldName: string) {
+    const field = this.addProductForm.get(fieldName)
+    return field.invalid && (field.dirty || field.touched)
+  }
 
   closeModal(): void {
     this.dialogRef.close();

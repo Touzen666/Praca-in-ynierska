@@ -29,7 +29,7 @@ export class QuantityEatenComponent implements OnInit {
   }
 
   eatProductForm = this.fb.group({
-    quantity: ['', Validators.required],
+    quantity: [0, Validators.required],
   })
   get quantity() { return this.eatProductForm.get('quantity') }
 

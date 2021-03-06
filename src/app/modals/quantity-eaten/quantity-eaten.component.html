@@ -6,8 +6,9 @@
         </div>
     </h1>
     <div mat-dialog-content class="content">
-        <h3 class="hint">Zjadana ilość:</h3>
-        <mat-slider thumbLabel formControlName="quantity" [displayWith]="formatLabel(data.product.units)" step="1"
+        <h3 class="hint">Zjadana ilość: {{quantity.value | number}}{{data.product.units}}</h3>
+        <mat-slider formControlName="quantity" step="1"
+            (input)="quantity.setValue($event.value)"
             min="0" [max]="data.product.weight"></mat-slider>
     </div>
     <button mat-raised-button color="primary" type="submit">

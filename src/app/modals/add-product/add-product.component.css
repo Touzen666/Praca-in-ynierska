@@ -1,60 +1,66 @@
-
 .modalImagePlaceholder {
-  content: url(../../../assets/image-placeholder.jpg);
-
-  width: 170px;
-  height: auto;
-  margin-left: 22vw;
-
+    content: url(../../../assets/image-placeholder.jpg);
+    width: 170px;
+    height: auto;
+    margin-left: 22vw;
 }
 
 .caloricValue {
-  padding-left: 10vw;
-  padding-right: 10vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
-.example-full-width{
-  width: 190px;
+
+.example-full-width {
+    width: 190px;
 }
+
 .m-checkbox {
-  padding-left: 15px;
+    padding-left: 15px;
 }
 
 @media (min-width: 400px) {
-  .content{
-    padding-left: 27%;
-    padding-right: 27%;
-  }
-  .img{
-    padding-left: 27%;
-    padding-right: 27%;
-  }
-  .modalImagePlaceholder {
-    margin-left: 40px;
-    margin-right: 40px;
-  }
+    .content {
+        padding-left: 27%;
+        padding-right: 27%;
+    }
+    .img {
+        padding-left: 27%;
+        padding-right: 27%;
+    }
+    .modalImagePlaceholder {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
 }
+
 @media (min-width: 1320px) {
-  .content{
-    padding-left: 30.5%;
-    padding-right: 30.5%;
-  }
-  .img{
-    padding-left: 33%;
-    padding-right: 33%;
-  }
-
+    .content {
+        padding-left: 30.5%;
+        padding-right: 30.5%;
+    }
+    .img {
+        padding-left: 33%;
+        padding-right: 33%;
+    }
 }
+
 @media (min-width: 1680px) {
-  .content{
-    padding-left: 31.2%;
-    padding-right: 31.2%;
-  }
+    .content {
+        padding-left: 31.2%;
+        padding-right: 31.2%;
+    }
+}
 
+
+/* .radio-b {
+    margin-right: 50px;
 }
-/* .radio-b{
-margin-right: 50px;
+
+.mat-radio-label {
+    margin-right: 50px;
+} */
+
+::ng-deep .mat-radio-persistent-ripple {
+    display: none;
+    height: 0;
 }
-.mat-radio-label{
-  margin-right: 50px;
-}
-*/

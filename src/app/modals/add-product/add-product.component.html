@@ -22,10 +22,6 @@
 
     </section>
     <section class="caloricValue">
-      <!-- <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Option 1</mat-radio-button>
-        <mat-radio-button value="2">Option 2</mat-radio-button>
-      </mat-radio-group> -->
       <mat-radio-group class="units" formControlName="units" aria-label="Select an option">
         <mat-radio-button color="primary" class="radio-b" value="g"></mat-radio-button>
         <mat-label class="radio-b-g">G</mat-label>
@@ -37,7 +33,7 @@
         <mat-error *ngIf="submitedForm">
           <div *ngIf="units.invalid">Jednostka wagi jest wymagana</div>
         </mat-error>
-      </mat-radio-group>
+      </mat-radio-group> 
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Waga jednostki: </mat-label>

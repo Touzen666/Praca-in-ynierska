@@ -12,7 +12,7 @@
         <mat-label>Nazwa</mat-label>
         <input matInput formControlName="name" placeholder="Jabłko" />
         <mat-error *ngIf="isFieldValid('name')">
-          <div *ngIf="name.errors.required && !submitedForm">Nazwa jest wymagana</div>
+          <div *ngIf="name.errors.required">Nazwa jest wymagana</div>
           <div *ngIf="name.errors.pattern">Dozwolone tylko litery</div>
         </mat-error>
       </mat-form-field>
@@ -25,10 +25,7 @@
         <mat-radio-button color="primary" class="radio-b" value="mil"></mat-radio-button>
         <mat-label class="radio-b-mil">MIL</mat-label>
         <mat-error *ngIf="units.invalid && (weight.dirty || weight.touched)">
-          <div *ngIf="units.errors.required || !submitedForm">Jednostka wagi jest wymagana</div>
-        </mat-error>
-        <mat-error *ngIf="submitedForm">
-          <div *ngIf="units.invalid">Jednostka wagi jest wymagana</div>
+          <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
         </mat-error>
       </mat-radio-group> 
       <br>

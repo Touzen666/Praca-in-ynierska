@@ -1,9 +1,13 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { v4 as uuidv4 } from 'uuid';
+
+
 import { Produkt } from 'src/app/models/produkt';
 import { FormBuilder, Validators } from '@angular/forms';
 // import { ProductDetaleComponent } from '../product-detale/product-detale.component';
@@ -16,12 +20,21 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class AddProductComponent implements OnInit {
   public title = 'Dodawanie Produktu';
 
+  @ViewChild("video")
+  public video: ElementRef;
+
+  @ViewChild("canvas")
+  public canvas: ElementRef;
+
+  public photo: string;
+
   public product: Produkt;
   public hasNotClicked: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<AddProductComponent>,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private storage: AngularFireStorage,
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
@@ -46,7 +59,7 @@ export class AddProductComponent implements OnInit {
     this.hasNotClicked = false
   }
 
-  submited() {
+  async submited() {
     // console.log(this.addProductForm.valid);
     this.product = this.addProductForm.value
 
@@ -58,11 +71,45 @@ export class AddProductComponent implements OnInit {
       return;
     };
     // console.log(this.addProductForm.value);
-    this.dialogRef.close(this.product);
+    if (this.photo) {
+      const photopath = uuidv4() + ".png";
+      const reference = this.storage.ref(photopath);
+      const b64photo = this.photo.replace('data:image/png;base64,', '');
+      console.log('b64photo', b64photo);
+      const task = reference.putString(b64photo, 'base64');
+      task.then(snapshot => {
+        reference.getDownloadURL().toPromise().then(url => {
+          console.log(url);
+          this.dialogRef.close({
+            ...this.product,
+            img: url,
+          } as Produkt);
+        })
+      })
+    } else {
+      this.dialogRef.close(this.product);
+    }
   }
   ngOnInit() {
 
   }
+
+  public ngAfterViewInit() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(stream => {
+        this.video.nativeElement.srcObject = stream;
+        this.video.nativeElement.play();
+      });
+    }
+  }
+
+  public capture() {
+    this.video.nativeElement.setAttribute('style', 'display: none;');
+    this.canvas.nativeElement.setAttribute('style', 'display: block;');
+    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
+    this.photo = this.canvas.nativeElement.toDataURL("image/png")
+  }
+
   isFieldValid(fieldName: string) {
     const field = this.addProductForm.get(fieldName)
     return field.invalid && (field.dirty || field.touched)

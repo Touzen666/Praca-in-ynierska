@@ -25,6 +25,9 @@ import { ColumnsFiltersComponent } from './tabela/columns-filters/columns-filter
 import { FiltersButtonComponent } from './tabela/filters-button/filters-button.component';
 import { QuantityEatenComponent } from './modals/quantity-eaten/quantity-eaten.component';
 
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { QuantityEatenComponent } from './modals/quantity-eaten/quantity-eaten.c
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
   ],
   providers: [],

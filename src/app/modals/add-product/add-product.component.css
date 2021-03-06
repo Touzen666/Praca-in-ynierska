@@ -1,8 +1,7 @@
 .modalImagePlaceholder {
-    content: url(../../../assets/image-placeholder.jpg);
-    width: 170px;
-    height: auto;
-    margin-left: 22vw;
+    /* content: url(../../../assets/image-placeholder.jpg); */
+    margin: 0 auto;
+    border: 1px solid black
 }
 
 .caloricValue {
@@ -16,39 +15,6 @@
 
 .m-checkbox {
     padding-left: 15px;
-}
-
-@media (min-width: 400px) {
-    .content {
-        padding-left: 27%;
-        padding-right: 27%;
-    }
-    .img {
-        padding-left: 27%;
-        padding-right: 27%;
-    }
-    .modalImagePlaceholder {
-        margin-left: 40px;
-        margin-right: 40px;
-    }
-}
-
-@media (min-width: 1320px) {
-    .content {
-        padding-left: 30.5%;
-        padding-right: 30.5%;
-    }
-    .img {
-        padding-left: 33%;
-        padding-right: 33%;
-    }
-}
-
-@media (min-width: 1680px) {
-    .content {
-        padding-left: 31.2%;
-        padding-right: 31.2%;
-    }
 }
 
 

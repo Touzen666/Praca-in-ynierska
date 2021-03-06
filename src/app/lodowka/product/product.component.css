@@ -1,22 +1,21 @@
-.product-card{
+.product-card {
     width: 100px;
     height: 100px;
     text-align: center;
     cursor: pointer;
 }
-.card-title{
+
+.card-title {
     position: absolute;
-    bottom: 0;left: 0;
+    bottom: 0;
+    left: 0;
     right: 0;
     height: 30px;
     padding-top: 15px;
-   border-top: rgb(218, 216, 216) solid 1px; 
-   color: rgb(95, 108, 121);
-}
-.modalImagePlaceholder{
-	content:url(../../../assets/image-placeholder.jpg);
-	width: 100px;
-
+    border-top: rgb(218, 216, 216) solid 1px;
+    color: rgb(95, 108, 121);
 }
 
-
+.modalImagePlaceholder {
+    width: 100px;
+}

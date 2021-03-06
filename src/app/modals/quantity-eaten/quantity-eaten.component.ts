@@ -33,12 +33,6 @@ export class QuantityEatenComponent implements OnInit {
   })
   get quantity() { return this.eatProductForm.get('quantity') }
 
-  eatProduct() {
-    this.auth.authState.subscribe((user) => {
-      this.lodowka.zjedzProdukt(user.uid, this.data.product.id, this.eatProductForm.value.quantity);
-      this.dialogRef.close();
-    });
-  }
   submited() {
     // console.log(this.addProductForm.valid);
     this.product = this.eatProductForm.value
@@ -46,7 +40,9 @@ export class QuantityEatenComponent implements OnInit {
     if (this.eatProductForm.valid && this.eatProductForm.dirty) {
       console.log(this.eatProductForm.value.quantity);
       this.dialogRef.close(this.product);
-      this.eatProduct();
+      this.auth.authState.subscribe((user) => {
+        this.lodowka.zjedzProdukt(user.uid, this.data.product.id, this.eatProductForm.value.quantity);
+      });
     } else {
       alert('Popraw formularz')
     }

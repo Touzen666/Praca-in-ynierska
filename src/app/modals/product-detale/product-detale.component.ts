@@ -48,4 +48,12 @@ export class ProductDetaleComponent implements OnInit {
   closeModal(): void {
     this.dialogRef.close();
   }
+
+  openEatProduct() {
+    this.openModal.openDialogEatenProduct(this.data.product).subscribe(product => {
+      if (product) {
+        this.dialogRef.close();
+      }
+    })
+  }
 }

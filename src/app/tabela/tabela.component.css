@@ -1,52 +1,85 @@
 table {
     width: 100%;
-  }
-  th.mat-sort-header-sorted {
-    color: black;
+}
 
-  }
-  @media (min-width: 414px) {
-    table{
-      text-align: center !important;
-    }
-    td{
-      text-align: center !important;
-    }
-  }
-   th{
+th,
+td {
+    vertical-align: middle;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+
+/* .sticky-column-name {
+    border-right: 1px solid black;
+} */
+
+
+/* .mat-table-sticky-border-elem-right {
+    border-left: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky-border-elem-left {
+    border-right: 1px solid #e0e0e0;
+} */
+
+
+/* .mat-table-sticky-border-elem-left {
+    border-right: 2px solid midnightblue;
+} */
+
+.table-container {
+    height: calc(100vh - 64px);
+    overflow: auto;
+}
+
+
+/* th {
     text-align: center !important;
     height: 30px !important;
     font-weight: 600;
-  }
+} */
 
-  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+
+/* th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
     padding-left: 13px;
     padding-right: 13px;
     padding-top: 20px;
-}
+} */
+
 
 /* ::ng-deep.mat-header-cell {
   text-align: center !important;
 } */
-.add-u-f-p{
-  text-align: center;
-  margin-top: 30vh;
-  width: 100%;
-  font-weight: 650;
-  }
-  .summary-calorical{
+
+.add-u-f-p {
+    text-align: center;
+    margin-top: 30vh;
+    width: 100%;
+    font-weight: 650;
+}
+
+
+/* .summary-calorical {
     position: fixed;
     left: 0;
     right: 0;
     background-color: white;
     z-index: 100;
-  }
-  .calories-table{
-    padding-top:141px ;
-    background-color: white;
-  }
+} */
 
-  .sticky-header{
+
+/* .calories-table {
+    padding-top: 141px;
+    background-color: white;
+} */
+
+
+/* .sticky-header{
     position: fixed;
     left: 0;
     right: 0;
@@ -54,30 +87,43 @@ table {
     background-color: white;
     z-index: 100;
     border-bottom: 1px solid rgb(230, 230, 230);
-  }
-  .header-title-calories-table{
-position: relative;
-top:8px
-  }
-  .table-container{
+  } */
+
+
+/* .header-title-calories-table {
+    position: relative;
+    top: 8px
+} */
+
+
+/* .table-container {
     margin-top: 48px;
-  }
-  .summary-calorical{
+} */
+
+
+/* .summary-calorical {
     text-align: center;
-  }
-  .calories-table{
+}
+
+.calories-table {
     text-align: center;
-  }
-.header-table{
-    position: sticky ;
+} */
+
+
+/* .header-table {
+    position: sticky;
     top: 246px;
     background-color: white;
-  }
-  th.mat-header-cell:first-of-type{
+} */
+
+
+/* th.mat-header-cell:first-of-type {
     z-index: 100;
-  }
-  .sticky-column-name{
-    position: sticky ;
+} */
+
+
+/* .sticky-column-name {
+    position: sticky;
     left: 0;
     background-color: white;
-  }
+} */

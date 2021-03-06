@@ -18,8 +18,6 @@ export class AddProductComponent implements OnInit {
 
   public product: Produkt;
   public hasNotClicked: boolean;
-  submitedForm: boolean = false;
-
 
   constructor(
     public dialogRef: MatDialogRef<AddProductComponent>,
@@ -51,19 +49,16 @@ export class AddProductComponent implements OnInit {
   submited() {
     // console.log(this.addProductForm.valid);
     this.product = this.addProductForm.value
-    console.log(this.submitedForm);
 
-    this.markInvalid()
-    if (this.addProductForm.valid && this.addProductForm.dirty) {
-      // console.log(this.addProductForm.value);
-      this.dialogRef.close(this.product);
-
-    } else {
-      alert('Popraw formularz')
-    }
-  }
-  markInvalid() {
-    this.submitedForm = true;
+    if (this.addProductForm.invalid) {
+      Object.keys(this.addProductForm.controls).forEach(field => {
+        const control = this.addProductForm.get(field);
+        control.markAsTouched({ onlySelf: true });
+      });
+      return;
+    };
+    // console.log(this.addProductForm.value);
+    this.dialogRef.close(this.product);
   }
   ngOnInit() {
 

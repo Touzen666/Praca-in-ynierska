@@ -7,11 +7,13 @@
     </h1>
     <div mat-dialog-content class="content">
         <section class="img">
-            <div class="modalImagePlaceholder">
+            <div class="modalImagePlaceholder" [style.display]="photoEditor ? 'block': 'none'">
                 <video #video id="video" width="640" height="480" autoplay></video>
                 <canvas #canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
                 <button mat-raised-button color="primary" type="button" (click)="capture()">Capture</button>
             </div>
+
+            <button *ngIf="!photoEditor" mat-raised-button color="primary" type="button" (click)="photoEditor = true">Zrob zdjecie</button>
             <mat-form-field class="example-full-width">
                 <mat-label>Nazwa</mat-label>
                 <input matInput formControlName="name" placeholder="Jabłko" />

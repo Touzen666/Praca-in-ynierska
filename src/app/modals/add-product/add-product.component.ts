@@ -27,6 +27,7 @@ export class AddProductComponent implements OnInit {
   public canvas: ElementRef;
 
   public photo: string;
+  public photoEditor: boolean = false;
 
   public product: Produkt;
   public hasNotClicked: boolean;
@@ -55,12 +56,12 @@ export class AddProductComponent implements OnInit {
   get carbohydrates() { return this.addProductForm.get('carbohydrates') }
   get proteines() { return this.addProductForm.get('proteines') }
   get fat() { return this.addProductForm.get('fat') }
+
   checkboxClicked() {
     this.hasNotClicked = false
   }
 
   async submited() {
-    // console.log(this.addProductForm.valid);
     this.product = this.addProductForm.value
 
     if (this.addProductForm.invalid) {
@@ -70,16 +71,14 @@ export class AddProductComponent implements OnInit {
       });
       return;
     };
-    // console.log(this.addProductForm.value);
+
     if (this.photo) {
       const photopath = uuidv4() + ".png";
       const reference = this.storage.ref(photopath);
       const b64photo = this.photo.replace('data:image/png;base64,', '');
-      console.log('b64photo', b64photo);
       const task = reference.putString(b64photo, 'base64');
       task.then(snapshot => {
         reference.getDownloadURL().toPromise().then(url => {
-          console.log(url);
           this.dialogRef.close({
             ...this.product,
             img: url,

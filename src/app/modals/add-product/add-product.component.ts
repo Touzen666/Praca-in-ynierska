@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit {
 
   public product: Produkt;
   public hasNotClicked: boolean;
-
+  public unit: string;
   constructor(
     public dialogRef: MatDialogRef<AddProductComponent>,
     public fb: FormBuilder,
@@ -60,7 +60,6 @@ export class AddProductComponent implements OnInit {
   checkboxClicked() {
     this.hasNotClicked = false
   }
-
   async submited() {
     this.product = this.addProductForm.value
 

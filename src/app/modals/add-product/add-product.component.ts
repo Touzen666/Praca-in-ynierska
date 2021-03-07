@@ -26,12 +26,16 @@ export class AddProductComponent implements OnInit {
   @ViewChild("canvas")
   public canvas: ElementRef;
 
+  @ViewChild("errorCamera")
+  public errorCamera;
+
   public photo: string;
   public photoEditor: boolean = false;
 
   public product: Produkt;
   public hasNotClicked: boolean;
   public unit: string;
+
   constructor(
     public dialogRef: MatDialogRef<AddProductComponent>,
     public fb: FormBuilder,
@@ -72,6 +76,7 @@ export class AddProductComponent implements OnInit {
     };
 
     if (this.photo) {
+
       const photopath = uuidv4() + ".png";
       const reference = this.storage.ref(photopath);
       const b64photo = this.photo.replace('data:image/png;base64,', '');
@@ -104,8 +109,21 @@ export class AddProductComponent implements OnInit {
   public capture() {
     this.video.nativeElement.setAttribute('style', 'display: none;');
     this.canvas.nativeElement.setAttribute('style', 'display: block;');
-    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
+
+    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 120, 120);
     this.photo = this.canvas.nativeElement.toDataURL("image/png")
+    // if (!this.photo) {
+    //   this.video.nativeElement.setAttribute('style', 'display: none;');
+    //   this.canvas.nativeElement.setAttribute('style', 'display: none;');
+    //   console.log(this.photo);
+
+    //   this.errorCamera.nativeElement.setAttribute('style', 'display: block;');
+    // } else {
+    //   this.video.nativeElement.setAttribute('style', 'display: none;');
+    //   this.canvas.nativeElement.setAttribute('style', 'display: block;');
+    //   console.log(this.photo);
+    //   this.errorCamera.nativeElement.setAttribute('style', 'display: none;');
+    // }
   }
 
   isFieldValid(fieldName: string) {

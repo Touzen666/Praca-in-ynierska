@@ -9,16 +9,15 @@
         <section class="img">
             <div class="imgContainer">
                 <div class="modalImagePlaceholder" [style.display]="photoEditor ? 'block': 'none'">
-                    <video #video id="video" width="640" height="480" autoplay></video>
-                    <canvas #canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
-                    <button mat-raised-button color="primary" type="button" (click)="capture()">Capture</button>
+                    <video class="video" #video id="video" width="120" height="120" autoplay></video>
+                    <canvas #canvas class="canvas" id="canvas" width="120" height="120" style="display: none;"></canvas>
+                    <!-- <p #errorCamera>Error</p> -->
+                    <button mat-raised-button color="primary" type="button" (click)="capture()">Zrob
+                        zdjecie</button>
                 </div>
-                <button *ngIf="!photoEditor" mat-raised-button color="primary" type="button"
+                <button class="capturPhoto" *ngIf="!photoEditor" mat-raised-button color="primary" type="button"
                     (click)="photoEditor = true">Zrob zdjecie</button>
             </div>
-
-
-
             <mat-form-field class="example-full-width">
                 <mat-label>Nazwa</mat-label>
                 <input matInput formControlName="name" placeholder="Jabłko" />

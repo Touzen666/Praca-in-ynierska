@@ -1,4 +1,5 @@
-<mat-sidenav-container class="example-container">
+<div *ngIf="isFacebookApp()">This application is not supported in your browser. If you are using facebook messanger, open this page in web browser.</div>
+<mat-sidenav-container class="example-container" *ngIf="!isFacebookApp()">
   <mat-sidenav #drawer mode="over" class="drawer">
     <h3 class="title">Menu</h3>
     <div class="sidenav">

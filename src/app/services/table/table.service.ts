@@ -47,7 +47,6 @@ export class TableService {
   }
 
   setTime(timeGroup: DateRage) {
-    console.log("setTime", timeGroup);
     this.range.next(timeGroup)
   }
 
@@ -73,7 +72,6 @@ export class TableService {
         })
         .subscribe((produkty) => {
           this.products.next(produkty);
-          console.log('pobrano produkty', produkty);
         });
     })
   }

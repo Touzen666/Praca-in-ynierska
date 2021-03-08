@@ -38,7 +38,6 @@ export class QuantityEatenComponent implements OnInit {
     this.product = this.eatProductForm.value
 
     if (this.eatProductForm.valid && this.eatProductForm.dirty) {
-      console.log(this.eatProductForm.value.quantity);
       this.dialogRef.close(this.product);
       this.auth.authState.subscribe((user) => {
         this.lodowka.zjedzProdukt(user.uid, this.data.product.id, this.eatProductForm.value.quantity);

@@ -37,11 +37,6 @@
                 <mat-radio-button color="primary" class="radio-b" value="mil">
                     <mat-label class="radio-b-mil">MIL</mat-label>
                 </mat-radio-button>
-
-                <mat-error
-                    *ngIf="units.invalid && (weight.dirty || weight.touched) || (calories.dirty || calories.touched) || (carbohydrates.dirty || carbohydrates.touched)|| (proteines.dirty || proteines.touched)|| (fat.dirty || fat.touched)">
-                    <div *ngIf="units.errors.required">Jednostka wagi jest wymagana</div>
-                </mat-error>
             </mat-radio-group>
             <br>
 
@@ -68,8 +63,7 @@
             <mat-form-field class="example-full-width">
                 <mat-label>Węglowodany</mat-label>
                 <input matInput formControlName="carbohydrates" min="0" type="number" placeholder="125" />
-                <span matSuffix *ngIf="units.value === 'g'">ww/100g</span>
-                <span matSuffix *ngIf="units.value === 'mil'">ww/100mil</span>
+                <span matSuffix>ww/100{{units.value}}</span>
                 <mat-error *ngIf="isFieldValid('carbohydrates')">
                     <div *ngIf="carbohydrates.errors.required">Węglowodany są wymagane</div>
                     <div *ngIf="carbohydrates.errors.min">Liczba musi być większa od 0</div>

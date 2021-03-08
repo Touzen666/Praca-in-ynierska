@@ -45,7 +45,7 @@ export class AddProductComponent implements OnInit {
 
   addProductForm = this.fb.group({
     name: ['', Validators.compose([Validators.required, Validators.maxLength(30), Validators.minLength(3), Validators.pattern('[a-z," ",A-ĄąĆćĘęŁłŃńÓóŚśŹźŻż]*')])],
-    units: ['', Validators.required],
+    units: ['g', Validators.required],
     weight: ['', Validators.compose([Validators.required, Validators.max(100000), Validators.min(1), Validators.pattern('[1-9]|10')])],
     calories: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(100000), Validators.min(1), Validators.required])],
     carbohydrates: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(100000), Validators.min(1), Validators.required])],
@@ -108,7 +108,7 @@ export class AddProductComponent implements OnInit {
 
   public capture() {
     this.video.nativeElement.setAttribute('style', 'display: none;');
-    this.canvas.nativeElement.setAttribute('style', 'display: block;');
+    this.canvas.nativeElement.setAttribute('style', 'display: inline-block;');
 
     var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 120, 120);
     this.photo = this.canvas.nativeElement.toDataURL("image/png")

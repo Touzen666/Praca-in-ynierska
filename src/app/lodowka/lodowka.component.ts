@@ -51,14 +51,12 @@ export class LodowkaComponent implements OnInit {
     else if (window.innerWidth >= 1101) {
       this.breakpoint = 8
     }
-    console.log("Szerokość ekranu", window.innerWidth);
     this.auth.authState.subscribe((user) => {
       this.user = user;
       this.lodowkaService
         .pobierzProduktyWLodowce(this.user.uid, false)
         .subscribe((produkty) => {
           this.products = produkty;
-          console.log('pobrano produkty', produkty);
           // this.lodowkaService.dodajDoLodowki(this.user.uid, {
           //   nazwa: "jablko",
           //   ilosc: 1,

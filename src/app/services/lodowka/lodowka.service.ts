@@ -81,6 +81,7 @@ export class LodowkaService {
       .doc()
       .set({
         ...obecnyProdukt,
+        calories: obecnyProdukt.calories / 100 * wagaDoZjedznia,
         weight: wagaDoZjedznia,
         eatenDate: Date.now()
       });

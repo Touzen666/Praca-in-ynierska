@@ -1,7 +1,8 @@
 <mat-card (click)="openModal.openDialogDetailsProduct(product)" class="product-card">
-  <!-- <div class="card-image">
-        <span></span>
-    </div> -->
-  <img mat-card-image [src]="product.img">
-  <h3 class="card-title">{{product.name}}</h3>
+  <div *ngIf="!product.img" class="card-image">
+  </div>
+
+  <img mat-card-image class="capture" *ngIf="product.img" [src]="product.img">
+  <h3 class="card-title title-white " *ngIf="product.img">{{product.name}}</h3>
+  <h3 class="card-title title-black " *ngIf="!product.img">{{product.name}}</h3>
 </mat-card>

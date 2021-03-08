@@ -12,8 +12,24 @@
     right: 0;
     height: 30px;
     padding-top: 15px;
+
+}
+.title-white{
     border-top: rgb(218, 216, 216) solid 1px;
-    color: rgb(95, 108, 121);
+    color: white;
+}
+.title-black{
+    border-top: rgb(29, 29, 29) solid 1px;
+    color: rgb(5, 5, 5);
+}
+.card-image{
+    content: url(../../../assets/image-placeholder.jpg);
+    width: 100px;
+    margin: 0 auto;
+
+}
+.capture{
+    border-radius: 5px;
 }
 
 .modalImagePlaceholder {

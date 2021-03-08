@@ -10,7 +10,8 @@
   <div class="content">
     <section class="img">
       <div class="modalImagePlaceholder">
-        <img [src]="data.product.img">
+        <div *ngIf="!data.product.img" class="card-image"></div>
+        <img *ngIf="data.product.img" class="capture" [src]="data.product.img">
       </div>
 
     </section>
@@ -20,19 +21,20 @@
           <mat-label>Nazwa:</mat-label>{{data.product.name}}
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.weight">
-          <mat-label>Waga jednostki:</mat-label>{{data.product.weight }}{{data.product.units }}
+          <mat-label>Waga jednostki:</mat-label>{{data.product.weight | number }}{{data.product.units }}
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.calories">
-          <mat-label>Kalorie:</mat-label>{{data.product.calories}}<p *ngIf="data.product.calories">kcl</p>
+          <mat-label>Kalorie:</mat-label>{{data.product.calories | number}}<p *ngIf="data.product.calories">kcl</p>
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.carbohydrates">
-          <mat-label>Węglowodany:</mat-label>{{data.product.carbohydrates}}
+          <mat-label>Węglowodany:</mat-label>{{data.product.carbohydrates | number}}<p
+            *ngIf="data.product.carbohydrates">ww</p>
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.fat">
-          <mat-label>Tłuszcz:</mat-label>{{data.product.fat}}
+          <mat-label>Tłuszcz:</mat-label>{{data.product.fat | number}}<p *ngIf="data.product.fat">g</p>
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.proteines">
-          <mat-label>Białko:</mat-label>{{data.product.proteines}}
+          <mat-label>Białko:</mat-label>{{data.product.proteines | number}}<p *ngIf="data.product.proteines">g</p>
         </mat-list-item>
       </mat-list>
     </div>

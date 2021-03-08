@@ -62,8 +62,12 @@ td.mat-footer-cell {
     width: 100%;
     font-weight: 650;
 }
-
-
+.tr-sum{
+  text-align: center;
+  }
+.mat-header-cell{
+  text-align: center;
+}
 /* .summary-calorical {
     position: fixed;
     left: 0;

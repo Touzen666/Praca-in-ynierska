@@ -1,9 +1,4 @@
-.modalImagePlaceholder {
-    width: 170px;
-    height: auto;
-    padding-left: 23%;
-    padding-right: 23%;
-}
+
 
 .eat-bottom-right {
     position: fixed;
@@ -11,19 +6,17 @@
     bottom: 16px;
     z-index: 100;
 }
-
-.modal-eat {
-    margin-left: 3px;
-    margin-right: 1px;
+.card-image{
+    content: url(../../../assets/image-placeholder.jpg);
+    width: 120px;
+    margin: 0 auto;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
 }
-
-@media (min-width: 400px) {
-    .modalImagePlaceholder {
-        padding-left: 35%;
-        padding-right: 35%;
-    }
-    .content {
-        padding-left: 33%;
-        padding-right: 33%;
-    }
+.capture{
+    border-radius: 5px;
+}
+.content {
+width: 260px;
+margin: 0 auto;
 }

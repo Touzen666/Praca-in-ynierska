@@ -3,6 +3,9 @@
     width: 150px;
     margin: 0 auto;
 }
+.imgContainer{
+    margin-bottom: 10px;
+}
 .caloricValue {
 width: 250px;
 margin: 0 auto;

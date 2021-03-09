@@ -26,7 +26,6 @@ import { FiltersButtonComponent } from './tabela/filters-button/filters-button.c
 import { QuantityEatenComponent } from './modals/quantity-eaten/quantity-eaten.component';
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { TitlesComponent } from './titles/titles.component';
 
 
 
@@ -44,7 +43,6 @@ import { TitlesComponent } from './titles/titles.component';
     ColumnsFiltersComponent,
     FiltersButtonComponent,
     QuantityEatenComponent,
-    TitlesComponent,
   ],
   imports: [
     BrowserModule,

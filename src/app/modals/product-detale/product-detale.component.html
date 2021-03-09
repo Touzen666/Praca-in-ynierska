@@ -17,24 +17,26 @@
     </section>
     <div mat-dialog-content>
       <mat-list role="list">
-        <mat-list-item role="listitem" *ngIf="data.product.name">
-          <mat-label>Nazwa:</mat-label>{{data.product.name}}
+        <mat-list-item role="listitem" class="word-wraping" *ngIf="data.product.name">
+          <mat-label>Nazwa:</mat-label>{{' ' + data.product.name}}
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.weight">
-          <mat-label>Waga jednostki:</mat-label>{{data.product.weight | number }}{{data.product.units }}
+          <mat-label>Ilość:</mat-label>{{' ' + data.product.weight | number }}{{data.product.units }}
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.calories">
-          <mat-label>Kalorie:</mat-label>{{data.product.calories | number}}<p *ngIf="data.product.calories">kcl</p>
+          <mat-label>Kalorie:</mat-label>{{' ' + data.product.calories | number}}<p *ngIf="data.product.calories">
+            kcl/100g</p>
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.carbohydrates">
-          <mat-label>Węglowodany:</mat-label>{{data.product.carbohydrates | number}}<p
-            *ngIf="data.product.carbohydrates">ww</p>
+          <mat-label>Węglowodany:</mat-label>{{' ' + data.product.carbohydrates | number}}<p
+            *ngIf="data.product.carbohydrates">ww/100g</p>
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.fat">
-          <mat-label>Tłuszcz:</mat-label>{{data.product.fat | number}}<p *ngIf="data.product.fat">g</p>
+          <mat-label>Tłuszcz:</mat-label>{{' ' + data.product.fat | number}}<p *ngIf="data.product.fat">/100g</p>
         </mat-list-item>
         <mat-list-item role="listitem" *ngIf="data.product.proteines">
-          <mat-label>Białko:</mat-label>{{data.product.proteines | number}}<p *ngIf="data.product.proteines">g</p>
+          <mat-label>Białko:</mat-label>{{' ' + data.product.proteines | number}}<p *ngIf="data.product.proteines">/100g
+          </p>
         </mat-list-item>
       </mat-list>
     </div>
@@ -42,7 +44,7 @@
 
   <div mat-dialog-actions class="eat-bottom-right">
     <div class="modal-eat">
-      <button mat-stroked-button color="primary" (click)="takeOfProduct()">Wyjmij z lodówki</button>
+      <button mat-stroked-button color="primary" (click)="takeOfProduct()">Wyrzuć z lodówki</button>
     </div>
     <div class="modal-eat">
       <button mat-raised-button color="primary" (click)="openEatProduct()">Zjedz</button>

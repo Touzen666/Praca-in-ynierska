@@ -3,6 +3,9 @@
   </div>
 
   <img mat-card-image class="capture" *ngIf="product.img" [src]="product.img">
-  <h3 class="card-title title-white " *ngIf="product.img">{{product.name}}</h3>
-  <h3 class="card-title title-black " *ngIf="!product.img">{{product.name}}</h3>
+  <h3 class="card-title title-white " *ngIf="product.img">{{(product.name?.length>9)? (product.name |
+    slice:0:10)+'...':(product.name) }}</h3>
+
+  <h3 class="card-title title-black " *ngIf="!product.img">{{(product.name?.length>9)? (product.name |
+    slice:0:10)+'...':(product.name) }}</h3>
 </mat-card>

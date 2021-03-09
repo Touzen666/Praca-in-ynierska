@@ -49,8 +49,8 @@ export class AddProductComponent implements OnInit {
     weight: ['', Validators.compose([Validators.required, Validators.max(100000), Validators.min(1), Validators.pattern('[1-9]|10')])],
     calories: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(100000), Validators.min(1), Validators.required])],
     carbohydrates: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(100000), Validators.min(1), Validators.required])],
-    proteines: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(100000), Validators.min(1), Validators.required])],
-    fat: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(100000), Validators.min(1), Validators.required])],
+    proteines: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(10000), Validators.min(1), Validators.required])],
+    fat: ['', Validators.compose([Validators.pattern('[1-9]|10'), Validators.max(10000), Validators.min(1), Validators.required])],
   })
 
   get name() { return this.addProductForm.get('name') }
@@ -110,7 +110,7 @@ export class AddProductComponent implements OnInit {
     this.video.nativeElement.setAttribute('style', 'display: none;');
     this.canvas.nativeElement.setAttribute('style', 'display: inline-block;');
 
-    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 120, 120);
+    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 360, 420);
     this.photo = this.canvas.nativeElement.toDataURL("image/png")
     // if (!this.photo) {
     //   this.video.nativeElement.setAttribute('style', 'display: none;');

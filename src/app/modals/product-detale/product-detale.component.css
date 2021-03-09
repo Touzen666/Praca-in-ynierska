@@ -20,3 +20,10 @@
 width: 260px;
 margin: 0 auto;
 }
+.modal-eat{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.word-wraping{
+    word-wrap: break-word;
+}

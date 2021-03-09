@@ -24,7 +24,7 @@
                     <div *ngIf="name.errors.required">Nazwa jest wymagana</div>
                     <div *ngIf="name.errors.pattern">Dozwolone tylko litery</div>
                     <div *ngIf="name.errors.minlength">Wpisz wiecej niz 3 znaki</div>
-                    <div *ngIf="name.errors.maxlength">Za dużo znaków</div>
+                    <div *ngIf="name.errors.maxlength">Wiecej niż 30 znaków</div>
                 </mat-error>
             </mat-form-field>
         </section>
@@ -41,55 +41,52 @@
             <br>
 
             <mat-form-field class="example-full-width">
-                <mat-label>Waga jednostki: </mat-label>
+                <mat-label>Ilość: </mat-label>
                 <input matInput formControlName="weight" min="0" type="number" placeholder="10" />
                 <mat-error *ngIf="isFieldValid('weight')">
-                    <div *ngIf="weight.errors.required">Waga jest wymagana</div>
+                    <div *ngIf="weight.errors.required">Ilość jest wymagana</div>
                     <div *ngIf="weight.errors.min">Liczba musi być większa od 0</div>
-                    <div *ngIf="weight.errors.max">Za duża liczba</div>
+                    <div *ngIf="weight.errors.max">Liczba większa niż 100000</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Kalorie</mat-label>
                 <input matInput formControlName="calories" min="0" type="number" placeholder="134kcl" />
-                <span matSuffix *ngIf="units.value === 'g'">kcl/100g</span>
-                <span matSuffix *ngIf="units.value === 'mil'">kcl/100mil</span>
+                <span matSuffix *ngIf="units.value ">kcl{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('calories')">
                     <div *ngIf="calories.errors.required">Kalorie są wymagane</div>
                     <div *ngIf="calories.errors.min">Liczba musi być większa od 0</div>
-                    <div *ngIf="calories.errors.max">Za duża liczba</div>
+                    <div *ngIf="calories.errors.max">Liczba większa niż 100000</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Węglowodany</mat-label>
                 <input matInput formControlName="carbohydrates" min="0" type="number" placeholder="125" />
-                <span matSuffix>ww/100{{units.value}}</span>
+                <span matSuffix *ngIf="units.value ">ww{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('carbohydrates')">
                     <div *ngIf="carbohydrates.errors.required">Węglowodany są wymagane</div>
                     <div *ngIf="carbohydrates.errors.min">Liczba musi być większa od 0</div>
-                    <div *ngIf="carbohydrates.errors.max">Za duża liczba</div>
+                    <div *ngIf="carbohydrates.errors.max">Liczba większa niż 10000</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Białko</mat-label>
                 <input matInput formControlName="proteines" min="0" type="number" placeholder="30g" />
-                <span matSuffix *ngIf="units.value === 'g'">/100g</span>
-                <span matSuffix *ngIf="units.value === 'mil'">/100mil</span>
+                <span matSuffix *ngIf="units.value ">{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('proteines')">
                     <div *ngIf="proteines.errors.required">Białko jest wymagane</div>
                     <div *ngIf="proteines.errors.min">Liczba musi być większa od 0</div>
-                    <div *ngIf="proteines.errors.max">Za duża liczba</div>
+                    <div *ngIf="proteines.errors.max">Liczba większa niż 10000</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Tłuszcze</mat-label>
                 <input matInput formControlName="fat" min="0" type="number" placeholder="12g" />
-                <span matSuffix *ngIf="units.value === 'g'">/100g</span>
-                <span matSuffix *ngIf="units.value === 'mil'">/100mil</span>
+                <span matSuffix *ngIf="units.value ">{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('fat')">
                     <div *ngIf="fat.errors.required ">Tłuszcze są wymagane</div>
                     <div *ngIf="fat.errors.min">Liczba musi być większa od 0</div>
-                    <div *ngIf="fat.errors.max">Za duża liczba</div>
+                    <div *ngIf="fat.errors.max">Liczba większa niż 10000</div>
                 </mat-error>
             </mat-form-field>
         </section>

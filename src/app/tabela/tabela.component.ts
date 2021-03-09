@@ -34,7 +34,8 @@ export class TabelaComponent implements OnInit, AfterViewInit {
     caloriesSum: 0,
     carbohydratesSum: 0,
     proteinesSum: 0,
-    fatSum: 0
+    fatSum: 0,
+    units: ''
   }
   sumSource: MatTableDataSource<columnSum>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -91,6 +92,7 @@ export class TabelaComponent implements OnInit, AfterViewInit {
       this.columnSum.carbohydratesSum += p.carbohydrates || 0
       this.columnSum.proteinesSum += p.proteines || 0
       this.columnSum.fatSum += p.fat || 0
+      this.columnSum.units = p.units
     })
     this.sumSource = new MatTableDataSource<columnSum>([this.columnSum]);
   }

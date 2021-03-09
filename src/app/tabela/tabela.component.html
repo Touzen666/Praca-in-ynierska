@@ -15,22 +15,23 @@
         <table mat-table [dataSource]="sumSource" class="mat-elevation-z1">
             <ng-container matColumnDef="caloriesSum">
                 <th mat-header-cell *matHeaderCellDef> Kalorie </th>
-                <td mat-cell *matCellDef="let element"> {{element.caloriesSum}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.caloriesSum | number}}kcl </td>
             </ng-container>
 
             <ng-container matColumnDef="carbohydratesSum">
                 <th mat-header-cell *matHeaderCellDef> Węglowdany </th>
-                <td mat-cell *matCellDef="let element"> {{element.carbohydratesSum}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.carbohydratesSum | number}}ww </td>
             </ng-container>
 
             <ng-container matColumnDef="proteinesSum">
                 <th mat-header-cell *matHeaderCellDef> Baiałko </th>
-                <td mat-cell *matCellDef="let element"> {{element.proteinesSum}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.proteinesSum | number}}{{element.units }}
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="fatSum">
                 <th mat-header-cell *matHeaderCellDef> Tłuszcz </th>
-                <td mat-cell *matCellDef="let element"> {{element.fatSum}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.fatSum | number}}{{element.units }} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedSumColumns"></tr>
@@ -47,7 +48,8 @@
                 <div matColumnDef="name" sticky>
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table  index-for-header"> Nazwa
                     </th>
-                    <td mat-cell *matCellDef="let element"> {{(element.name?.length>10)? (element.name | slice:0:10)+'..':(element.name)}} </td>
+                    <td mat-cell *matCellDef="let element"> {{(element.name?.length>14)? (element.name |
+                        slice:0:10)+'...':(element.name)}} </td>
                 </div>
                 <div matColumnDef="eatenDate" sticky>
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Zjedzono </th>
@@ -60,23 +62,23 @@
                 </div> -->
                 <div matColumnDef="weight">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Ilość </th>
-                    <td mat-cell *matCellDef="let element"> {{element.weight}}{{ element.units }}</td>
+                    <td mat-cell *matCellDef="let element"> {{element.weight | number}}{{ element.units }}</td>
                 </div>
                 <div matColumnDef="calories">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Kalorie </th>
-                    <td mat-cell *matCellDef="let element"> {{element.calories}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.calories | number}}kcl </td>
                 </div>
                 <div matColumnDef="carbohydrates">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Węglowodany </th>
-                    <td mat-cell *matCellDef="let element"> {{element.carbohydrates}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.carbohydrates | number}}ww </td>
                 </div>
                 <div matColumnDef="proteines">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Białko </th>
-                    <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.proteines | number}}{{ element.units }} </td>
                 </div>
                 <vr matColumnDef="fat">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Tłuszcz </th>
-                    <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.fat | number}}{{ element.units }} </td>
                 </vr>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>

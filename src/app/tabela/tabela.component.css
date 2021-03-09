@@ -65,8 +65,19 @@ td.mat-footer-cell {
 .tr-sum{
   text-align: center;
   }
-.mat-header-cell{
-  text-align: center;
+  .th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+      text-align: justify;
+      padding: 3px;
+  }
+/* .mat-header-cell{
+    text-align: center;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+    text-align: center;
+
+} */
+.mat-focus-indicator {
+    /* text-align: center; */
 }
 /* .summary-calorical {
     position: fixed;

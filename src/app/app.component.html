@@ -1,11 +1,12 @@
-<div *ngIf="isFacebookApp()">This application is not supported in your browser. If you are using facebook messanger, open this page in web browser.</div>
+<div *ngIf="isFacebookApp()">This application is not supported in your browser. If you are using facebook messanger,
+  open this page in web browser.</div>
 <mat-sidenav-container class="example-container" *ngIf="!isFacebookApp()">
   <mat-sidenav #drawer mode="over" class="drawer">
     <h3 class="title">Menu</h3>
     <div class="sidenav">
-      <a routerLink="user">Użytkownik</a>
-      <a routerLink="lodowka">Lodowka</a>
-      <a routerLink="tabelaKalorii">Tabela kalorii </a>
+      <a routerLink="user" (click)="catchTitle()">Użytkownik</a>
+      <a routerLink="lodowka" (click)="catchTitle()">Lodowka</a>
+      <a routerLink="tabelaKalorii" (click)="catchTitle()">Tabela kalorii </a>
     </div>
   </mat-sidenav>
   <mat-sidenav position="end" [opened]="drawerRightService.open" mode="over" class="drawerEnd">
@@ -21,6 +22,9 @@
       <button mat-button (click)="drawer.toggle()">
         <img style="height: 30px;" src="../assets/menu.png" alt="menu">
       </button>
+      <span>
+        {{href}}
+      </span>
       <img *ngIf="user" routerLink="user" class="profile-photo" [src]="user.photoURL">
 
     </mat-toolbar>

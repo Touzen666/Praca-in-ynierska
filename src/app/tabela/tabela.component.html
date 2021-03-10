@@ -8,12 +8,12 @@
     </mat-label>
 </div>
 <div class="container" *ngIf="productsList.length !== 0 ">
+    <mat-label class="header ">
+        <h1 class="header-title">Podsumowanie kaloryczne</h1>
+    </mat-label>
     <div class="summary-calorical">
-        <mat-label class="header ">
-            <h1 class="header-title">Podsumowanie kaloryczne</h1>
-        </mat-label>
-        <table mat-table [dataSource]="sumSource" class="mat-elevation-z1">
-            <ng-container matColumnDef="caloriesSum">
+        <table mat-table [dataSource]="sumSource" class="mat-elevation-z1 table-sum">
+            <ng-container matColumnDef="caloriesSum" sticky>
                 <th mat-header-cell *matHeaderCellDef> Kalorie </th>
                 <td mat-cell *matCellDef="let element"> {{element.caloriesSum | number}}kcl </td>
             </ng-container>

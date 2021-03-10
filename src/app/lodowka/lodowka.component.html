@@ -3,7 +3,7 @@
     <h1 class="header-title">Lodówka</h1>
   </mat-label>
   <div class="grid-container">
-    <mat-grid-list *ngIf="products.length !== 0 ; else elseBlock" [cols]="breakpoint" style="height: 300px" class="grid"
+    <mat-grid-list *ngIf="products.length !== 0 ; else elseBlock" [cols]="breakpoint" style="height: 500px" class="grid"
       (window:resize)="onResize($event)">
       <mat-grid-tile *ngFor="let product of products">
         <app-product-card [product]="product"></app-product-card>

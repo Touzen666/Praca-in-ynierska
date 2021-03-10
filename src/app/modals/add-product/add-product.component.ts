@@ -110,7 +110,7 @@ export class AddProductComponent implements OnInit {
     this.video.nativeElement.setAttribute('style', 'display: none;');
     this.canvas.nativeElement.setAttribute('style', 'display: inline-block;');
 
-    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 360, 420);
+    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 120, 120);
     this.photo = this.canvas.nativeElement.toDataURL("image/png")
     // if (!this.photo) {
     //   this.video.nativeElement.setAttribute('style', 'display: none;');

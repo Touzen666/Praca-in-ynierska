@@ -1,12 +1,15 @@
 .product-card {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     text-align: center;
     cursor: pointer;
 }
-
+.img-container{
+            /* width: 120px;
+        height: 120px; */
+}
 .card-title {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
@@ -27,9 +30,11 @@
     width: 100px;
     margin: 0 auto;
 
+
 }
+
 .capture{
-    border-radius: 5px;
+
 }
 
 .modalImagePlaceholder {

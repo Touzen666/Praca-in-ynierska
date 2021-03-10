@@ -15,7 +15,6 @@ export interface eatenProduct {
   styleUrls: ['./quantity-eaten.component.css']
 })
 export class QuantityEatenComponent implements OnInit {
-  public title = 'Zjadana Ilość';
   product: eatenProduct;
   constructor(
     public lodowka: LodowkaService,

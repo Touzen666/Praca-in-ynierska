@@ -26,4 +26,5 @@ margin: 0 auto;
 }
 .word-wraping{
     word-wrap: break-word;
+    word-break: break-all;
 }

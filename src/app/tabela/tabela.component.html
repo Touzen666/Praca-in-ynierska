@@ -25,13 +25,13 @@
 
             <ng-container matColumnDef="proteinesSum">
                 <th mat-header-cell *matHeaderCellDef> Baiałko </th>
-                <td mat-cell *matCellDef="let element"> {{element.proteinesSum | number}}{{element.units }}
+                <td mat-cell *matCellDef="let element"> {{element.proteinesSum | number}}g
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="fatSum">
                 <th mat-header-cell *matHeaderCellDef> Tłuszcz </th>
-                <td mat-cell *matCellDef="let element"> {{element.fatSum | number}}{{element.units }} </td>
+                <td mat-cell *matCellDef="let element"> {{element.fatSum | number}}g </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedSumColumns"></tr>
@@ -74,11 +74,11 @@
                 </div>
                 <div matColumnDef="proteines">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Białko </th>
-                    <td mat-cell *matCellDef="let element"> {{element.proteines | number}}{{ element.units }} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.proteines | number}}g </td>
                 </div>
                 <vr matColumnDef="fat">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-table"> Tłuszcz </th>
-                    <td mat-cell *matCellDef="let element"> {{element.fat | number}}{{ element.units }} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.fat | number}}g </td>
                 </vr>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>

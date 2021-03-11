@@ -119,6 +119,37 @@ export class AddProductComponent implements OnInit {
     return field.invalid && (field.dirty || field.touched)
   }
 
+  loadDataFromBalance() {
+    var products = [
+      {
+        units: "g",
+        weight: 100,
+        calories: 120,
+        carbohydrates: 115,
+        proteines: 8,
+        fat: 4
+      },
+      {
+        units: "mil",
+        weight: 250,
+        calories: 178,
+        carbohydrates: 164,
+        proteines: 12,
+        fat: 13
+      },
+      {
+        units: "g",
+        weight: 150,
+        calories: 172,
+        carbohydrates: 145,
+        proteines: 9,
+        fat: 3
+      }
+    ];
+    var randomProduct = products[Math.floor(Math.random() * products.length)];
+    this.addProductForm.patchValue(randomProduct);
+  }
+
   closeModal(): void {
     this.dialogRef.close();
   }

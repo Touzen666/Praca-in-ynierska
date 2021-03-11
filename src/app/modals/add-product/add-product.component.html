@@ -51,7 +51,7 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <mat-label>Kalorie</mat-label>
+                <mat-label>Kalorie:</mat-label>
                 <input matInput formControlName="calories" min="0" type="number" placeholder="134kcl" />
                 <span matSuffix *ngIf="units.value ">kcl{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('calories')">
@@ -62,7 +62,7 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <mat-label>Węglowodany</mat-label>
+                <mat-label>Węglowodany:</mat-label>
                 <input matInput formControlName="carbohydrates" min="0" type="number" placeholder="125" />
                 <span matSuffix *ngIf="units.value ">ww{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('carbohydrates')">
@@ -73,7 +73,7 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <mat-label>Białko</mat-label>
+                <mat-label>Białko:</mat-label>
                 <input matInput formControlName="proteines" min="0" type="number" placeholder="30g" />
                 <span matSuffix *ngIf="units.value ">{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('proteines')">
@@ -84,7 +84,7 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <mat-label>Tłuszcze</mat-label>
+                <mat-label>Tłuszcze:</mat-label>
                 <input matInput formControlName="fat" min="0" type="number" placeholder="12g" />
                 <span matSuffix *ngIf="units.value ">{{'/100' + units.value}}</span>
                 <mat-error *ngIf="isFieldValid('fat')">
@@ -97,7 +97,7 @@
         </section>
     </div>
     <div mat-dialog-actions style="justify-content: center">
-        <button mat-raised-button [mat-dialog-close]="product">Wczytaj dane z wagi</button>
+        <button mat-raised-button (click)="loadDataFromBalance()">Wczytaj dane z wagi</button>
         <button mat-raised-button color="primary" type="submit">
             Dodaj
         </button>

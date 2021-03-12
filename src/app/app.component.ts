@@ -27,14 +27,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     })
   }
   ngOnInit(): void {
-    // this.router.events.subscribe(event => {
-    //   if (event instanceof NavigationEnd) {
-    //     this.route.data.subscribe(data => {
-    //       this.href = data["pageName"]
-    //       console.log(data);
-    //     })
-    //   }
-    // });
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => this.route),

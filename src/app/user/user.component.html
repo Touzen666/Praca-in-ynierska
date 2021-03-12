@@ -1,5 +1,6 @@
 <div>
-    <ngx-auth-firebaseui *ngIf="!user" [providers]="[providers.Google]" (onSuccess)="redirectToFridge()">
+    <ngx-auth-firebaseui *ngIf="!user" [providers]="[providers.Google]" [guestEnabled]="false"
+        (onSuccess)="redirectToFridge()">
     </ngx-auth-firebaseui>
     <ngx-auth-firebaseui-user *ngIf="user" [providers]="[providers.Google]" (onSuccess)="redirectToFridge()">
     </ngx-auth-firebaseui-user>

@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FirestoreSyncService } from 'ngx-auth-firebaseui';
 import { DrawerRightService } from './services/drawerRight/drawer-right.service';
 import firebase from 'firebase';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 
 @Component({
@@ -15,16 +16,40 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'Praca-inzynierska';
   public user: firebase.User
   public href: string = "";
-  constructor(public auth: AngularFireAuth, private router: Router, public drawerRightService: DrawerRightService) {
+  constructor(
+    public auth: AngularFireAuth,
+    private router: Router,
+    private route: ActivatedRoute,
+    public drawerRightService: DrawerRightService
+  ) {
     this.auth.authState.subscribe((user) => {
       this.user = user;
     })
   }
   ngOnInit(): void {
-
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.route.data.subscribe(data => {
+    //       this.href = data["pageName"]
+    //       console.log(data);
+    //     })
+    //   }
+    // });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.route),
+      map(route => {
+        while (route.firstChild) route = route.firstChild
+        return route
+      }),
+      filter(route => route.outlet === 'primary'),
+      mergeMap(route => route.data)
+    ).subscribe(data => {
+      this.href = data["pageName"]
+    }
+    )
   }
   ngAfterViewInit(): void {
-    this.catchTitle();
   }
 
   login() {
@@ -32,25 +57,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   logout() {
     this.auth.signOut();
-
-  }
-
-  catchTitle() {
-
-    let url = this.router.url
-    if (url == '/lodowka') {
-      url = "Lodówka"
-    } else if (url == '/user') {
-      url = "Profil"
-    }
-    else if (url == '/tabelaKalorii') {
-      url = "Tabela kalorii"
-    }
-    else if (url == '/') {
-      url = "Moja dieta"
-    }
-    this.href = url;
-    console.log(this.router.url);
   }
 
   isFacebookApp() {

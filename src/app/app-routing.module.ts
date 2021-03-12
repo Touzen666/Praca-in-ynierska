@@ -10,18 +10,27 @@ const routes: Routes = [
   {
     path: "user",
     component: UserComponent,
+    data: {
+      pageName: "Konto użytkownika",
+    }
   },
   {
     path: "lodowka",
     component: LodowkaComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectUnauthorizedTo(['user']) }
+    data: {
+      authGuardPipe: () => redirectUnauthorizedTo(['user']),
+      pageName: "Lodówka",
+    }
   },
   {
     path: "tabelaKalorii",
     component: TabelaComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectUnauthorizedTo(['user']) }
+    data: {
+      authGuardPipe: () => redirectUnauthorizedTo(['user']),
+      pageName: "Tabela kalorii",
+    }
   }
 ];
 

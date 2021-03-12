@@ -47,7 +47,7 @@
                     <div *ngIf="weight.errors.required">Ilość jest wymagana</div>
                     <div *ngIf="weight.errors.min">Liczba musi być większa od 0</div>
                     <div *ngIf="weight.errors.max">Liczba większa niż 100000</div>
-                    <div *ngIf="weight.errors.pattern">Dozwolone tylko liczby całkowite</div>
+                    <div *ngIf="weight.errors.pattern">Dozwolone tylko jedno miejsce po przecinku</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -58,7 +58,7 @@
                     <div *ngIf="calories.errors.required">Kalorie są wymagane</div>
                     <div *ngIf="calories.errors.min">Liczba musi być większa od 0</div>
                     <div *ngIf="calories.errors.max">Liczba większa niż 100000</div>
-                    <div *ngIf="calories.errors.pattern">Dozwolone tylko liczby całkowite</div>
+                    <div *ngIf="calories.errors.pattern">Dozwolone tylko jedno miejsce po przecinku</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -69,7 +69,7 @@
                     <div *ngIf="carbohydrates.errors.required">Węglowodany są wymagane</div>
                     <div *ngIf="carbohydrates.errors.min">Liczba musi być większa od 0</div>
                     <div *ngIf="carbohydrates.errors.max">Liczba większa niż 10000</div>
-                    <div *ngIf="carbohydrates.errors.pattern">Dozwolone tylko liczby całkowite</div>
+                    <div *ngIf="carbohydrates.errors.pattern">Dozwolone tylko jedno miejsce po przecinku</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -80,7 +80,7 @@
                     <div *ngIf="proteines.errors.required">Białko jest wymagane</div>
                     <div *ngIf="proteines.errors.min">Liczba musi być większa od 0</div>
                     <div *ngIf="proteines.errors.max">Liczba większa niż 10000</div>
-                    <div *ngIf="proteines.errors.pattern">Dozwolone tylko liczby całkowite</div>
+                    <div *ngIf="proteines.errors.pattern">Dozwolone tylko jedno miejsce po przecinku</div>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
@@ -91,7 +91,7 @@
                     <div *ngIf="fat.errors.required ">Tłuszcze są wymagane</div>
                     <div *ngIf="fat.errors.min">Liczba musi być większa od 0</div>
                     <div *ngIf="fat.errors.max">Liczba większa niż 10000</div>
-                    <div *ngIf="fat.errors.pattern">Dozwolone tylko liczby całkowite</div>
+                    <div *ngIf="fat.errors.pattern">Dozwolone tylko jedno miejsce po przecinku</div>
                 </mat-error>
             </mat-form-field>
         </section>

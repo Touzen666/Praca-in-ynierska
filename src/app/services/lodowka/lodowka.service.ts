@@ -28,6 +28,7 @@ export class LodowkaService {
       .collection(collection, ref => ref
         .where("eatenDate", ">", options?.eatenDateFrom?.getTime() || minDate)
         .where("eatenDate", "<", options?.eatenDateTo?.getTime() || maxDate)
+        .orderBy("eatenDate", "desc")
       )
       .valueChanges({ idField: "id" })
       .pipe(
@@ -82,6 +83,9 @@ export class LodowkaService {
       .set({
         ...obecnyProdukt,
         calories: obecnyProdukt.calories / 100 * wagaDoZjedznia,
+        carbohydrates: obecnyProdukt.carbohydrates / 100 * wagaDoZjedznia,
+        proteines: obecnyProdukt.proteines / 100 * wagaDoZjedznia,
+        fat: obecnyProdukt.fat / 100 * wagaDoZjedznia,
         weight: wagaDoZjedznia,
         eatenDate: Date.now()
       });

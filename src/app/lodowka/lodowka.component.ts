@@ -36,7 +36,7 @@ export class LodowkaComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    if (window.innerWidth <= 400) {
+    if (window.innerWidth <= 440) {
       this.breakpoint = 2
     }
     else if (window.innerWidth <= 600) {

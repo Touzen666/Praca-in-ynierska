@@ -46,11 +46,11 @@ export class AddProductComponent implements OnInit {
   addProductForm = this.fb.group({
     name: ['', Validators.compose([Validators.required, Validators.maxLength(15), Validators.minLength(3), Validators.pattern('[a-z," ",A-ĄąĆćĘęŁłŃńÓóŚśŹźŻż]*')])],
     units: ['g', Validators.required],
-    weight: ['', Validators.compose([Validators.required, Validators.max(100000), Validators.min(1), Validators.pattern('^[0-9]+(.[0-9]{0,0})?$')])],
-    calories: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,0})?$'), Validators.max(100000), Validators.min(1), Validators.required])],
-    carbohydrates: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,0})?$'), Validators.max(100000), Validators.min(1), Validators.required])],
-    proteines: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,0})?$'), Validators.max(10000), Validators.min(1), Validators.required])],
-    fat: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,0})?$'), Validators.max(10000), Validators.min(1), Validators.required])],
+    weight: ['', Validators.compose([Validators.required, Validators.max(100000), Validators.min(1), Validators.pattern('^[0-9]+(.[0-9]{0,1})?$')])],
+    calories: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,1})?$'), Validators.max(100000), Validators.min(1), Validators.required])],
+    carbohydrates: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,1})?$'), Validators.max(100000), Validators.min(1), Validators.required])],
+    proteines: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,1})?$'), Validators.max(10000), Validators.min(1), Validators.required])],
+    fat: ['', Validators.compose([Validators.pattern('^[0-9]+(.[0-9]{0,1})?$'), Validators.max(10000), Validators.min(1), Validators.required])],
   })
 
   get name() { return this.addProductForm.get('name') }

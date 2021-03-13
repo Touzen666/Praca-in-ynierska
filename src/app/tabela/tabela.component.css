@@ -12,7 +12,7 @@ th.mat-sort-header-sorted {
 }
 
 .table-container {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 56px);
     overflow: auto;
 }
 
@@ -22,16 +22,18 @@ th.mat-sort-header-sorted {
     width: 100%;
     font-weight: 650;
 }
-.tr-sum{
-  text-align: center;
-  }
-  .th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
-      text-align: justify;
-      padding: 3px;
-  }
 
-.summary-calorical{
-    overflow: auto;
-
+.tr-sum {
+    text-align: center;
 }
 
+.th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    text-align: justify;
+    padding: 3px;
+}
+
+.summary-calorical {
+    overflow: auto;
+}
